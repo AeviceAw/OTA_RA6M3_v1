@@ -1016,7 +1016,8 @@ fsp_err_t R_SCI_UART_BaudCalculate (uint32_t               baudrate,
                      *  bit rate error[%] = {(PCLK / (baud * div_coefficient * (BRR + 1)) - 1} x 100
                      *  calculates bit rate error[%] to three decimal places
                      */
-                    int32_t err_divisor = (int32_t) (divisor * (temp_brr + 1U));
+//                    int32_t err_divisor = (int32_t) (divisor * (temp_brr + 1U));
+                    int32_t err_divisor = 119808000;
 
                     /* Promoting to 64 bits for calculation, but the final value can never be more than 32 bits, as
                      * described below, so this cast is safe.
@@ -1035,8 +1036,9 @@ fsp_err_t R_SCI_UART_BaudCalculate (uint32_t               baudrate,
                      *    6. bit_err is between -100000 and 0.  This entire range fits in an int32_t type, so the cast
                      *       to (int32_t) is safe.
                      */
-                    int32_t bit_err = (int32_t) (((((int64_t) freq_hz) * SCI_UART_100_PERCENT_X_1000) /
-                                                  err_divisor) - SCI_UART_100_PERCENT_X_1000);
+//                    int32_t bit_err = (int32_t) (((((int64_t) freq_hz) * SCI_UART_100_PERCENT_X_1000) /
+//                                                  err_divisor) - SCI_UART_100_PERCENT_X_1000);
+                    int32_t bit_err = 160;
 
                     uint8_t mddr = 0U;
                     if (bitrate_modulation)

@@ -1,6 +1,8 @@
 #include "initialisations.h"
 #define DATAPROCESS_ON 1
 
+#ifdef DO_THE_THING
+
 uint32_t g_dataEntry_count=0;
 
 // ===============================================
@@ -127,3 +129,15 @@ void dataprocess_thread_entry(void *pvParameters){
     FSP_PARAMETER_NOT_USED (pvParameters);
 } // end dataprocess_thread_entry()
 
+#else
+void dataprocess_thread_entry(void *pvParameters){
+    volatile fsp_err_t status=FSP_ERR_ASSERTION;
+    while (1)
+    {
+        vTaskDelay (1);
+    }
+    FSP_PARAMETER_NOT_USED (status);
+    FSP_PARAMETER_NOT_USED (pvParameters);
+
+} // end subscribe_thread_entry()
+#endif

@@ -1,5 +1,6 @@
 #include "initialisations.h"
 
+#ifdef DO_THE_THING
 #define LYRA_TIMEOUT_THRES 800 // 8-sec
 #define BLE_TIMEOUT_MIN 1      // 1-min
 uint32_t g_uartOK=0;           // Count UART OK
@@ -19,7 +20,7 @@ void uart_thread_entry(void *pvParameters){
     APP_PRINT("\r\n%s Priority %d: uart_thread_entry()",RTT_TIMESTAMP(),uxTaskPriorityGet(uart_thread));
 
     /* Open the Lyra-P UART Port */
-    status = R_SCI_UART_Open(&g_uart0_ctrl, &g_uart0_cfg);
+    status = R_SCI_UART_Open(&g_uart1_ctrl, &g_uart1_cfg);
 
     /* Enable access to the PFS registers. If using r_ioport module then
      * register protection is automatically handled.
@@ -63,7 +64,7 @@ void uart_thread_entry(void *pvParameters){
             uart_awsNOK++;
 
             /* Abort any Read and Write */
-            status = R_SCI_UART_Abort(&g_uart0_ctrl, UART_DIR_RX_TX);
+            status = R_SCI_UART_Abort(&g_uart1_ctrl, UART_DIR_RX_TX);
 
             // ======================================================================
             /* Feedback SSIDPW Setup Progress */
@@ -83,7 +84,7 @@ void uart_thread_entry(void *pvParameters){
                 } // end while(!g_ble)
                 vTaskDelay(1000);
                 /* Collect Data from Lyra P */
-                status=g_sf_comms0_read(&g_uart0_ctrl, getUartDataAddr(), EUART_DATA_SIZE, LYRA_TIMEOUT_THRES);
+                status=g_sf_comms0_read(&g_uart1_ctrl, getUartDataAddr(), EUART_DATA_SIZE, LYRA_TIMEOUT_THRES);
                 if (status==FSP_SUCCESS){
                     /* Update BLEC State because UART SUCESS */
                     //blec_state_update(LED_color_get(),imu_onbody_get(),BLEC_state_get(), getTrueCheckVal(),&g_uartOK);
@@ -120,7 +121,7 @@ void uart_thread_entry(void *pvParameters){
 
                     /* TODO: Error Handling */
                     if (g_uartNOK%(10*BLE_TIMEOUT_MIN)==0){ // x10 NOK ~ 60sec
-                        status=g_sf_comms0_write(&g_uart0_ctrl, (uint8_t*)"Connection-Timeouted!\r\n", 23, 100);
+                        status=g_sf_comms0_write(&g_uart1_ctrl, (uint8_t*)"Connection-Timeouted!\r\n", 23, 100);
                         BLE_disconnect();
                     } // end if (>uartNOK Count)
                 }  // end if (uart_nok)
@@ -128,7 +129,7 @@ void uart_thread_entry(void *pvParameters){
 
 //            if (BLE_check()){
 //                /* Collect Data from Lyra P */
-//                status=g_sf_comms0_read(&g_uart0_ctrl, getUartDataAddr(), UART_DATA_SIZE, LYRA_TIMEOUT_THRES);
+//                status=g_sf_comms0_read(&g_uart1_ctrl, getUartDataAddr(), UART_DATA_SIZE, LYRA_TIMEOUT_THRES);
 //                if (status==FSP_SUCCESS){
 //                    /* Update BLEC State because UART SUCESS */
 //                    blec_state_update(LED_color_get(),imu_onbody_get(),BLEC_state_get(), getTrueCheckVal(),&g_uartOK);
@@ -140,7 +141,7 @@ void uart_thread_entry(void *pvParameters){
 //
 //                    /* TODO: Error Handling */
 //                    if (g_uartNOK%(10*BLE_TIMEOUT_MIN)==0){ // x10 NOK ~ 60sec
-//                        status=g_sf_comms0_write(&g_uart0_ctrl, (uint8_t*)"Connection-Timeouted!\r\n", 23, 100);
+//                        status=g_sf_comms0_write(&g_uart1_ctrl, (uint8_t*)"Connection-Timeouted!\r\n", 23, 100);
 //                        BLE_disconnect();
 //                    } // end if (>uartNOK Count)
 //                }  // end if (uart_nok)
@@ -170,3 +171,15 @@ void uart_thread_entry(void *pvParameters){
     FSP_PARAMETER_NOT_USED(uxBits);
     FSP_PARAMETER_NOT_USED(status);
 } // end uart_thread_entry()
+#else
+void uart_thread_entry(void *pvParameters){
+    volatile fsp_err_t status=FSP_ERR_ASSERTION;
+    while (1)
+    {
+        vTaskDelay (1);
+    }
+    FSP_PARAMETER_NOT_USED (status);
+    FSP_PARAMETER_NOT_USED (pvParameters);
+
+} // end subscribe_thread_entry()
+#endif

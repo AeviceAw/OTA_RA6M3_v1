@@ -1,5 +1,6 @@
 #include "initialisations.h"
 
+#ifdef DO_THE_THING
 /* SSIDPW thread entry function */
 /* pvParameters contains TaskHandle_t */
 void ssidpw_thread_entry(void *pvParameters){
@@ -44,9 +45,9 @@ void ssidpw_thread_entry(void *pvParameters){
         status=g_sf_comms0_write(&g_uart0_ctrl, (uint8_t*)"Success\r\n", 9, 100);
         g_feedbackState_set(fb_CONNECTING);
 
-        /* Write to dataFlash - Reading will be done at Wifi_thread Entry */
-        status = DF_Write_SSID((char*)getWifiParamAddr(WIFI_SSID));
-        status = DF_Write_PW((char*)getWifiParamAddr(WIFI_PASSWORD));
+//        /* Write to dataFlash - Reading will be done at Wifi_thread Entry */
+//        status = DF_Write_SSID((char*)getWifiParamAddr(WIFI_SSID));
+//        status = DF_Write_PW((char*)getWifiParamAddr(WIFI_PASSWORD));
 
         /* Clear <<SYNC_FLAG_ALL>> Bits in <<g_sync_event>>. */
         uxBits = xEventGroupClearBits( g_sync_event,    /* The event group being updated. */
@@ -60,3 +61,15 @@ void ssidpw_thread_entry(void *pvParameters){
     FSP_PARAMETER_NOT_USED (uxBits);
 
 } // end ssidpw_thread_entry()
+#else
+void ssidpw_thread_entry(void *pvParameters){
+    volatile fsp_err_t status=FSP_ERR_ASSERTION;
+    while (1)
+    {
+        vTaskDelay (1);
+    }
+    FSP_PARAMETER_NOT_USED (status);
+    FSP_PARAMETER_NOT_USED (pvParameters);
+
+} // end subscribe_thread_entry()
+#endif

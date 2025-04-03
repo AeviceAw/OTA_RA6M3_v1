@@ -266,10 +266,10 @@ static SemaphoreHandle_t xBufferSemaphore;
 extern MQTTAgentContext_t xGlobalMqttAgentContext;
 extern char g_iot_thing_name[128];
 
-extern char g_write_buffer[2048];
+char g_write_buffer[2048];
 bool g_cred = false;
 
-#define aevice_wifi "AU-Router 201607130713"
+#define aevice_wifi "AU-Router 201607130713\r"
 /*---------------------------------------------------------*/
 
 /**
@@ -1439,7 +1439,7 @@ void flash_cert_init(void)
 
     memcpy(g_write_buffer,DEVICE_CERT,sizeof(DEVICE_CERT));
     err = aws_certficate_write (0);
-    memcpy(g_write_buffer,PRIVATE_KEY,sizeof(PRIVATE_KEY));
+    memcpy(g_write_buffer,DEVICE_KEY,sizeof(DEVICE_KEY));
     err = aws_certficate_write (1);
     memcpy(g_write_buffer,SIGN_KEY,sizeof(SIGN_KEY));
     err = aws_certficate_write (4);
@@ -1455,4 +1455,7 @@ void flash_cert_init(void)
             APP_ERR_PRINT("\r\n Write certs failed");
             APP_ERR_TRAP(err);
         }
+
+    err = flash_mem_init ();
+    err = check_credentials_stored ();
 }

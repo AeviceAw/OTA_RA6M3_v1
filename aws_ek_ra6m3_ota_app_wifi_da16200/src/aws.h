@@ -46,12 +46,12 @@
 #elif (DN==ota)
     #define DNAME "LR_DNAME"
     #define DISABLE_SNI (false)
-    #define AWS_ENDPOINT "a3diwcjwt78ey7-ats.iot.ap-southeast-1.amazonaws.com"
+    #define AWS_ENDPOINT "a3diwcjwt78ey7-ats.iot.ap-southeast-1.amazonaws.com\r"
     #define MQTT_HOST_PORT (8883)
     #define MQTT_SEND_TIMEOUT (5000)
     #define MQTT_RECEIVE_TIMEOUT (5000)
     #define MQTT_TOPIC "ra6m3_ota_demo_thing/Ethernet/Message"
-    #define MQTT_CLIENT_IDENTIFIER "ra6m3_ota_demo_thing"
+    #define MQTT_CLIENT_IDENTIFIER "ra6m3_ota_demo_thing\r"
     #define MQTT_KEEP_ALIVE_SECONDS (60)
     #define MQTT_PAYLOAD ("{\"DEVICE_NAME\":\"EK-RA6M3\",\"CONNECTION\":\"OK\",\"ERROR\":\"0\"}")
 

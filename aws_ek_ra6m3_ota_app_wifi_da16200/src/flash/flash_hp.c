@@ -25,9 +25,9 @@ static volatile _Bool is_b_flash_event_write_complete = false;
 static fsp_err_t blankcheck_event_flag(void);
 
 extern char g_write_buffer[BUFFER_SIZE];
-extern uint8_t g_start_read_flag;
+uint8_t g_start_read_flag;
 extern bool g_cred_type_flag;
-extern uint16_t g_counter;
+uint16_t g_counter;
 extern bool g_cred;
 
 uint32_t g_allocated_size;

@@ -310,6 +310,9 @@ void ota_thread_entry(void *pvParameters)
     //TODO: Add wait for writing certs to flash
     FSP_PARAMETER_NOT_USED (pvParameters);
 
+    flash_cert_init();
+    APP_PRINT("Certs hardcoded");
+
     /* Copy AWS client certificate, private key and MQTT end point */
     memcpy (CLIENT_CERTIFICATE_PEM, g_certificate, strlen(g_certificate));
     memcpy (CLIENT_KEY_PEM, g_private_key, strlen(g_private_key));

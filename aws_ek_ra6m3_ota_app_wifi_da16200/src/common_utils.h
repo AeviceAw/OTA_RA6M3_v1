@@ -172,12 +172,7 @@ extern char __buff[];
                                      	}\
 								 }})
 
-#define APP_INFO_PRINT(fn_, ...) ({if(LOG_LVL >= LOG_INFO){\
-                                     if(LOG_TERMINAL == RTT_TERMINAL){\
-                                         SEGGER_RTT_printf (SEGGER_INDEX, "[INFO] In Function: %s(), ", __FUNCTION__);\
-                                         SEGGER_RTT_printf (SEGGER_INDEX, (fn_), ##__VA_ARGS__);\
-                                     	}\
-                                 }})
+#define APP_INFO_PRINT(fn_, ...) (SEGGER_RTT_printf (SEGGER_INDEX, (fn_), ##__VA_ARGS__))
 
 #define APP_DBG_PRINT(fn_, ...)  ({if(LOG_LVL >= LOG_DEBUG){\
                                      if(LOG_TERMINAL == RTT_TERMINAL){\
