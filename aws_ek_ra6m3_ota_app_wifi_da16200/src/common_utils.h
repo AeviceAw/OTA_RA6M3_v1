@@ -153,10 +153,7 @@ extern char __buff[];
                                 "\r\nEthernet adapter Configuration for Renesas "KIT_NAME": Post IP Init       "\
                                 "\r\n--------------------------------------------------------------------------------\r\n\r\n"
 
-#define APP_PRINT(fn_, ...)         ({if(LOG_TERMINAL == RTT_TERMINAL){\
-                                       SEGGER_RTT_printf (SEGGER_INDEX,(fn_), ##__VA_ARGS__);\
-                                    }\
-                                    })
+#define APP_PRINT(fn_, ...)         (SEGGER_RTT_printf (SEGGER_INDEX, (fn_), ##__VA_ARGS__))
 
 #define APP_ERR_PRINT(fn_, ...)     ({if(LOG_LVL >= LOG_ERROR){\
                                         if(LOG_TERMINAL == RTT_TERMINAL){\

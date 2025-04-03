@@ -15,6 +15,7 @@ C_SRCS += \
 ../ra/arm/mbedtls/library/bignum_core.c \
 ../ra/arm/mbedtls/library/bignum_mod.c \
 ../ra/arm/mbedtls/library/bignum_mod_raw.c \
+../ra/arm/mbedtls/library/block_cipher.c \
 ../ra/arm/mbedtls/library/camellia.c \
 ../ra/arm/mbedtls/library/ccm.c \
 ../ra/arm/mbedtls/library/chacha20.c \
@@ -32,11 +33,11 @@ C_SRCS += \
 ../ra/arm/mbedtls/library/ecjpake.c \
 ../ra/arm/mbedtls/library/ecp.c \
 ../ra/arm/mbedtls/library/ecp_curves.c \
+../ra/arm/mbedtls/library/ecp_curves_new.c \
 ../ra/arm/mbedtls/library/entropy.c \
 ../ra/arm/mbedtls/library/entropy_poll.c \
 ../ra/arm/mbedtls/library/error.c \
 ../ra/arm/mbedtls/library/gcm.c \
-../ra/arm/mbedtls/library/hash_info.c \
 ../ra/arm/mbedtls/library/hkdf.c \
 ../ra/arm/mbedtls/library/hmac_drbg.c \
 ../ra/arm/mbedtls/library/lmots.c \
@@ -52,6 +53,7 @@ C_SRCS += \
 ../ra/arm/mbedtls/library/padlock.c \
 ../ra/arm/mbedtls/library/pem.c \
 ../ra/arm/mbedtls/library/pk.c \
+../ra/arm/mbedtls/library/pk_ecc.c \
 ../ra/arm/mbedtls/library/pk_wrap.c \
 ../ra/arm/mbedtls/library/pkcs12.c \
 ../ra/arm/mbedtls/library/pkcs5.c \
@@ -65,8 +67,9 @@ C_SRCS += \
 ../ra/arm/mbedtls/library/psa_crypto_aead.c \
 ../ra/arm/mbedtls/library/psa_crypto_cipher.c \
 ../ra/arm/mbedtls/library/psa_crypto_client.c \
-../ra/arm/mbedtls/library/psa_crypto_driver_wrappers.c \
+../ra/arm/mbedtls/library/psa_crypto_driver_wrappers_no_static.c \
 ../ra/arm/mbedtls/library/psa_crypto_ecp.c \
+../ra/arm/mbedtls/library/psa_crypto_ffdh.c \
 ../ra/arm/mbedtls/library/psa_crypto_hash.c \
 ../ra/arm/mbedtls/library/psa_crypto_mac.c \
 ../ra/arm/mbedtls/library/psa_crypto_pake.c \
@@ -81,6 +84,7 @@ C_SRCS += \
 ../ra/arm/mbedtls/library/rsa_alt_helpers.c \
 ../ra/arm/mbedtls/library/sha1.c \
 ../ra/arm/mbedtls/library/sha256.c \
+../ra/arm/mbedtls/library/sha3.c \
 ../ra/arm/mbedtls/library/sha512.c \
 ../ra/arm/mbedtls/library/ssl_cache.c \
 ../ra/arm/mbedtls/library/ssl_ciphersuites.c \
@@ -118,6 +122,7 @@ C_DEPS += \
 ./ra/arm/mbedtls/library/bignum_core.d \
 ./ra/arm/mbedtls/library/bignum_mod.d \
 ./ra/arm/mbedtls/library/bignum_mod_raw.d \
+./ra/arm/mbedtls/library/block_cipher.d \
 ./ra/arm/mbedtls/library/camellia.d \
 ./ra/arm/mbedtls/library/ccm.d \
 ./ra/arm/mbedtls/library/chacha20.d \
@@ -135,11 +140,11 @@ C_DEPS += \
 ./ra/arm/mbedtls/library/ecjpake.d \
 ./ra/arm/mbedtls/library/ecp.d \
 ./ra/arm/mbedtls/library/ecp_curves.d \
+./ra/arm/mbedtls/library/ecp_curves_new.d \
 ./ra/arm/mbedtls/library/entropy.d \
 ./ra/arm/mbedtls/library/entropy_poll.d \
 ./ra/arm/mbedtls/library/error.d \
 ./ra/arm/mbedtls/library/gcm.d \
-./ra/arm/mbedtls/library/hash_info.d \
 ./ra/arm/mbedtls/library/hkdf.d \
 ./ra/arm/mbedtls/library/hmac_drbg.d \
 ./ra/arm/mbedtls/library/lmots.d \
@@ -155,6 +160,7 @@ C_DEPS += \
 ./ra/arm/mbedtls/library/padlock.d \
 ./ra/arm/mbedtls/library/pem.d \
 ./ra/arm/mbedtls/library/pk.d \
+./ra/arm/mbedtls/library/pk_ecc.d \
 ./ra/arm/mbedtls/library/pk_wrap.d \
 ./ra/arm/mbedtls/library/pkcs12.d \
 ./ra/arm/mbedtls/library/pkcs5.d \
@@ -168,8 +174,9 @@ C_DEPS += \
 ./ra/arm/mbedtls/library/psa_crypto_aead.d \
 ./ra/arm/mbedtls/library/psa_crypto_cipher.d \
 ./ra/arm/mbedtls/library/psa_crypto_client.d \
-./ra/arm/mbedtls/library/psa_crypto_driver_wrappers.d \
+./ra/arm/mbedtls/library/psa_crypto_driver_wrappers_no_static.d \
 ./ra/arm/mbedtls/library/psa_crypto_ecp.d \
+./ra/arm/mbedtls/library/psa_crypto_ffdh.d \
 ./ra/arm/mbedtls/library/psa_crypto_hash.d \
 ./ra/arm/mbedtls/library/psa_crypto_mac.d \
 ./ra/arm/mbedtls/library/psa_crypto_pake.d \
@@ -184,6 +191,7 @@ C_DEPS += \
 ./ra/arm/mbedtls/library/rsa_alt_helpers.d \
 ./ra/arm/mbedtls/library/sha1.d \
 ./ra/arm/mbedtls/library/sha256.d \
+./ra/arm/mbedtls/library/sha3.d \
 ./ra/arm/mbedtls/library/sha512.d \
 ./ra/arm/mbedtls/library/ssl_cache.d \
 ./ra/arm/mbedtls/library/ssl_ciphersuites.d \
@@ -221,6 +229,7 @@ OBJS += \
 ./ra/arm/mbedtls/library/bignum_core.o \
 ./ra/arm/mbedtls/library/bignum_mod.o \
 ./ra/arm/mbedtls/library/bignum_mod_raw.o \
+./ra/arm/mbedtls/library/block_cipher.o \
 ./ra/arm/mbedtls/library/camellia.o \
 ./ra/arm/mbedtls/library/ccm.o \
 ./ra/arm/mbedtls/library/chacha20.o \
@@ -238,11 +247,11 @@ OBJS += \
 ./ra/arm/mbedtls/library/ecjpake.o \
 ./ra/arm/mbedtls/library/ecp.o \
 ./ra/arm/mbedtls/library/ecp_curves.o \
+./ra/arm/mbedtls/library/ecp_curves_new.o \
 ./ra/arm/mbedtls/library/entropy.o \
 ./ra/arm/mbedtls/library/entropy_poll.o \
 ./ra/arm/mbedtls/library/error.o \
 ./ra/arm/mbedtls/library/gcm.o \
-./ra/arm/mbedtls/library/hash_info.o \
 ./ra/arm/mbedtls/library/hkdf.o \
 ./ra/arm/mbedtls/library/hmac_drbg.o \
 ./ra/arm/mbedtls/library/lmots.o \
@@ -258,6 +267,7 @@ OBJS += \
 ./ra/arm/mbedtls/library/padlock.o \
 ./ra/arm/mbedtls/library/pem.o \
 ./ra/arm/mbedtls/library/pk.o \
+./ra/arm/mbedtls/library/pk_ecc.o \
 ./ra/arm/mbedtls/library/pk_wrap.o \
 ./ra/arm/mbedtls/library/pkcs12.o \
 ./ra/arm/mbedtls/library/pkcs5.o \
@@ -271,8 +281,9 @@ OBJS += \
 ./ra/arm/mbedtls/library/psa_crypto_aead.o \
 ./ra/arm/mbedtls/library/psa_crypto_cipher.o \
 ./ra/arm/mbedtls/library/psa_crypto_client.o \
-./ra/arm/mbedtls/library/psa_crypto_driver_wrappers.o \
+./ra/arm/mbedtls/library/psa_crypto_driver_wrappers_no_static.o \
 ./ra/arm/mbedtls/library/psa_crypto_ecp.o \
+./ra/arm/mbedtls/library/psa_crypto_ffdh.o \
 ./ra/arm/mbedtls/library/psa_crypto_hash.o \
 ./ra/arm/mbedtls/library/psa_crypto_mac.o \
 ./ra/arm/mbedtls/library/psa_crypto_pake.o \
@@ -287,6 +298,7 @@ OBJS += \
 ./ra/arm/mbedtls/library/rsa_alt_helpers.o \
 ./ra/arm/mbedtls/library/sha1.o \
 ./ra/arm/mbedtls/library/sha256.o \
+./ra/arm/mbedtls/library/sha3.o \
 ./ra/arm/mbedtls/library/sha512.o \
 ./ra/arm/mbedtls/library/ssl_cache.o \
 ./ra/arm/mbedtls/library/ssl_ciphersuites.o \
@@ -321,6 +333,6 @@ aws_ek_ra6m3_ota_app_wifi_da16200.map
 
 # Each subdirectory must supply rules for building sources it contributes
 ra/arm/mbedtls/library/%.o: ../ra/arm/mbedtls/library/%.c
-	$(file > $@.in,-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -D_RENESAS_RA_ -D_RA_ORDINAL=1 -D_RA_CORE=CM4 -D_RA_BOOT_IMAGE -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src" -I"." -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/inc" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/inc/api" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/inc/instances" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_freertos_port" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS/Source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/fsp_cfg/bsp" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/fsp_cfg" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/aws" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/mcu-tools/include/mcuboot_image_utilities_config" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_mcuboot_port" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/mcu-tools/MCUboot/boot/bootutil/src" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/mcu-tools/MCUboot/boot/bootutil/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/coreJSON/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/arm" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/mbedtls/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/mbedtls/library" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/arm/littlefs" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/littlefs" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/intel/tinycbor/src" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce/common" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_aws_ota_pal_mcuboot" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_psa_crypto/inc" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/Utilities/logging" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/VisualStudio_StaticProjects/MbedTLS" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/Application-Protocols/coreMQTT/source/interface" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/Application-Protocols/network_transport" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/corePKCS11/source/dependency/3rdparty/mbedtls_utils" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/amazon-freertos/demos/dev_mode_key_provisioning/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/Application-Protocols/coreMQTT/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/corePKCS11/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/corePKCS11/source/dependency/3rdparty/pkcs11" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/AWS/ota/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/mcu-tools/include/mcuboot_image_utilities_config/sysflash" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/mcu-tools/include/mcuboot_image_utilities_config/mcuboot_config" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/arm/mbedtls" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/backoffAlgorithm" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/SEGGER_RTT" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/mqtt-agent-interface" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/mqtt-agent-interface/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/pkcs11_helpers" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/coreMQTT-Agent/source" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/mqtt_agent" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/coreMQTT-Agent" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/coreMQTT-Agent/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/AWS/ota/source/portable/os" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce/crypto_procedures/src/sce7/plainkey/private/inc" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce/crypto_procedures/src/sce7/plainkey/public/inc" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce/crypto_procedures/src/sce7/plainkey/primitive" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_aws_sockets_wrapper_wifi_da16xxx" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_wifi_da16xxx" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_at_transport_da16xxx_uart" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS-DSP/PrivateInclude" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS-DSP/Include" -std=c99 -Wno-stringop-overflow -Wno-format-truncation -w --param=min-pagesize=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" -x c "$<")
+	$(file > $@.in,-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -D_RENESAS_RA_ -D_RA_ORDINAL=1 -D_RA_CORE=CM4 -D_RA_BOOT_IMAGE -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src" -I"." -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/inc" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/inc/api" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/inc/instances" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_freertos_port" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS/Source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/fsp_cfg/bsp" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/fsp_cfg" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/aws" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/mcu-tools/include/mcuboot_image_utilities_config" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_mcuboot_port" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/mcu-tools/MCUboot/boot/bootutil/src" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/mcu-tools/MCUboot/boot/bootutil/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/coreJSON/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/arm" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/mbedtls/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/mbedtls/library" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/arm/littlefs" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/littlefs" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/intel/tinycbor/src" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce/common" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_aws_ota_pal_mcuboot" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_psa_crypto/inc" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/Utilities/logging" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/VisualStudio_StaticProjects/MbedTLS" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/Application-Protocols/coreMQTT/source/interface" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/Application-Protocols/network_transport" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/corePKCS11/source/dependency/3rdparty/mbedtls_utils" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/amazon-freertos/demos/dev_mode_key_provisioning/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/Application-Protocols/coreMQTT/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/corePKCS11/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/corePKCS11/source/dependency/3rdparty/pkcs11" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/AWS/ota/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/mcu-tools/include/mcuboot_image_utilities_config/sysflash" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/mcu-tools/include/mcuboot_image_utilities_config/mcuboot_config" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/arm/mbedtls" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/backoffAlgorithm" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/SEGGER_RTT" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/mqtt-agent-interface" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/mqtt-agent-interface/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/pkcs11_helpers" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/coreMQTT-Agent/source" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/mqtt_agent" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/coreMQTT-Agent" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/coreMQTT-Agent/source/include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS-Plus/Source/AWS/ota/source/portable/os" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce/crypto_procedures/src/sce7/plainkey/private/inc" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce/crypto_procedures/src/sce7/plainkey/public/inc" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/r_sce/crypto_procedures/src/sce7/plainkey/primitive" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_aws_sockets_wrapper_wifi_da16xxx" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_wifi_da16xxx" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/rm_at_transport_da16xxx_uart" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS-DSP/PrivateInclude" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS-DSP/Include" -I"C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include" -std=c99 -Wno-stringop-overflow -Wno-format-truncation -w --param=min-pagesize=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" -x c "$<")
 	@echo Building file: $< && arm-none-eabi-gcc @"$@.in"
 

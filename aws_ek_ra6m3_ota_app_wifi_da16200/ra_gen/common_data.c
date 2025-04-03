@@ -108,7 +108,7 @@ const struct lfs_config g_rm_littlefs0_lfs_cfg =
     .prog_buffer = (void *) g_rm_littlefs0_prog,
     .lookahead_buffer = (void *) g_rm_littlefs0_lookahead,
 #endif
-#if LFS_THREAD_SAFE
+#ifdef LFS_THREADSAFE
     .lock   = &rm_littlefs_flash_lock,
     .unlock = &rm_littlefs_flash_unlock,
 #endif
@@ -127,7 +127,7 @@ const rm_littlefs_instance_t g_rm_littlefs0 =
 dtc_instance_ctrl_t g_transfer0_ctrl;
 
 #if (1 == 1)
-transfer_info_t g_transfer0_info =
+transfer_info_t g_transfer0_info DTC_TRANSFER_INFO_ALIGNMENT =
 { .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_FIXED,
   .transfer_settings_word_b.repeat_area = TRANSFER_REPEAT_AREA_SOURCE,
   .transfer_settings_word_b.irq = TRANSFER_IRQ_END,
@@ -142,7 +142,7 @@ transfer_info_t g_transfer0_info =
 
 #elif (1 > 1)
 /* User is responsible to initialize the array. */
-transfer_info_t g_transfer0_info[1];
+transfer_info_t g_transfer0_info[1] DTC_TRANSFER_INFO_ALIGNMENT;
 #else
 /* User must call api::reconfigure before enable DTC transfer. */
 #endif
@@ -190,7 +190,9 @@ const sci_uart_extended_cfg_t g_uart0_cfg_extend =
                 #else
     .de_control_pin = (bsp_io_port_pin_t) UINT16_MAX,
 #endif
-          }, };
+          },
+  .irda_setting =
+  { .ircr_bits_b.ire = 0, .ircr_bits_b.irrxinv = 0, .ircr_bits_b.irtxinv = 0, }, };
 
 /** UART interface configuration */
 const uart_cfg_t g_uart0_cfg =
@@ -388,14 +390,14 @@ SemaphoreHandle_t g_publish_semaphore;
 StaticSemaphore_t g_publish_semaphore_memory;
 #endif
 void rtos_startup_err_callback(void *p_instance, void *p_data);
-SemaphoreHandle_t g_sync_event;
+EventGroupHandle_t g_wifi_event;
 #if 1
-StaticSemaphore_t g_sync_event_memory;
+StaticEventGroup_t g_wifi_event_memory;
 #endif
 void rtos_startup_err_callback(void *p_instance, void *p_data);
-SemaphoreHandle_t g_wifi_event;
+EventGroupHandle_t g_sync_event;
 #if 1
-StaticSemaphore_t g_wifi_event_memory;
+StaticEventGroup_t g_sync_event_memory;
 #endif
 void rtos_startup_err_callback(void *p_instance, void *p_data);
 void g_common_init(void)
@@ -577,24 +579,24 @@ void g_common_init(void)
     {
         rtos_startup_err_callback (g_publish_semaphore, 0);
     }
-    g_sync_event =
-#if 1
-            xSemaphoreCreateBinaryStatic (&g_sync_event_memory);
-#else
-                xSemaphoreCreateBinary();
-                #endif
-    if (NULL == g_sync_event)
-    {
-        rtos_startup_err_callback (g_sync_event, 0);
-    }
     g_wifi_event =
 #if 1
-            xSemaphoreCreateBinaryStatic (&g_wifi_event_memory);
+            xEventGroupCreateStatic (&g_wifi_event_memory);
 #else
-                xSemaphoreCreateBinary();
+                xEventGroupCreate();
                 #endif
     if (NULL == g_wifi_event)
     {
         rtos_startup_err_callback (g_wifi_event, 0);
+    }
+    g_sync_event =
+#if 1
+            xEventGroupCreateStatic (&g_sync_event_memory);
+#else
+                xEventGroupCreate();
+                #endif
+    if (NULL == g_sync_event)
+    {
+        rtos_startup_err_callback (g_sync_event, 0);
     }
 }

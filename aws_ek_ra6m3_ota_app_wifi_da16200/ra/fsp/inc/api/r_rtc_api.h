@@ -136,6 +136,8 @@ typedef enum e_rtc_periodic_irq_select
 } rtc_periodic_irq_select_t;
 #endif
 
+#ifndef BSP_OVERRIDE_RTC_TIME_CAPTURE_SOURCE_T
+
 /** Time capture trigger source */
 typedef enum e_rtc_time_capture_source
 {
@@ -146,12 +148,13 @@ typedef enum e_rtc_time_capture_source
     RTC_TIME_CAPTURE_SOURCE_SOFTWARE    = 4, ///< Software trigger
     RTC_TIME_CAPTURE_SOURCE_ELC_EVENT   = 5, ///< ELC event trigger
 } rtc_time_capture_source_t;
+#endif
 
 /** Time capture trigger mode */
 typedef enum e_rtc_time_capture_mode
 {
-    RTC_TIME_CAPTURE_MODE_CONTINUOUS  = 0, ///< Continuous capturing to all capturing channels
-    RTC_TIME_CAPTURE_MODE_ONE_SHOT    = 1, ///< Single capture to a particular channel
+    RTC_TIME_CAPTURE_MODE_CONTINUOUS = 0, ///< Continuous capturing to all capturing channels
+    RTC_TIME_CAPTURE_MODE_ONE_SHOT   = 1, ///< Single capture to a particular channel
 } rtc_time_capture_mode_t;
 
 /** Time capture noise filter control */
@@ -194,11 +197,11 @@ typedef struct st_rtc_alarm_time
 /** Time capture configuration structure */
 typedef struct st_rtc_time_capture
 {
-    rtc_time_t                      time;             ///< Time structure
-    uint8_t                         channel;          ///< Capture channel
-    rtc_time_capture_source_t       source;           ///< Trigger source
-    rtc_time_capture_noise_filter_t noise_filter;     ///< Noise filter
-    rtc_time_capture_mode_t         mode;             ///< Capture mode
+    rtc_time_t                      time;         ///< Time structure
+    uint8_t                         channel;      ///< Capture channel
+    rtc_time_capture_source_t       source;       ///< Trigger source
+    rtc_time_capture_noise_filter_t noise_filter; ///< Noise filter
+    rtc_time_capture_mode_t         mode;         ///< Capture mode
 } rtc_time_capture_t;
 
 /** RTC Information Structure for information returned by  infoGet() */

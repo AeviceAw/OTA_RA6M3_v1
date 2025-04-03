@@ -409,6 +409,12 @@ void decodeDurState(int8_t dur){
             ////APP_PRINT("DUR(%02d): IMU to be awlays on\n",dur);
             break;
         } // end (87: IMU=1)
+        case 88:{
+            /* Start OTA */
+            vStartOtaDemo();
+            ////APP_PRINT("DUR(%02d): IMU to be awlays on\n",dur);
+            break;
+        } // end (88: OTA init)
         case 99:{
             /* Reinitialize all the variables */
             // TODO: DUR 99 - Variables Reinitialie

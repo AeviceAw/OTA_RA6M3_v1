@@ -12,6 +12,9 @@
  *
  * See http://www.freertos.org/a00110.html
  *----------------------------------------------------------*/
+#ifndef FREERTOS_CONFIG_H
+#define FREERTOS_CONFIG_H
+
 #include "bsp_api.h"
 
 /* Common macro for FSP header files. There is also a corresponding FSP_FOOTER macro at the end of this file. */
@@ -70,6 +73,9 @@ FSP_HEADER
 #endif
 #ifndef configUSE_TASK_NOTIFICATIONS
 #define configUSE_TASK_NOTIFICATIONS (1)
+#endif
+#ifndef configTASK_NOTIFICATION_ARRAY_ENTRIES
+#define configTASK_NOTIFICATION_ARRAY_ENTRIES (1)
 #endif
 #ifndef configUSE_MUTEXES
 #define configUSE_MUTEXES (1)
@@ -204,7 +210,7 @@ FSP_HEADER
 #define INCLUDE_xEventGroupSetBitFromISR (1)
 #endif
 #ifndef INCLUDE_xTimerPendFunctionCall
-#define INCLUDE_xTimerPendFunctionCall (0)
+#define INCLUDE_xTimerPendFunctionCall (1)
 #endif
 #ifndef INCLUDE_xTaskAbortDelay
 #define INCLUDE_xTaskAbortDelay (0)
@@ -233,4 +239,6 @@ FSP_HEADER
 
 /* Common macro for FSP header files. There is also a corresponding FSP_HEADER macro at the top of this file. */
 FSP_FOOTER
+
+#endif /* FREERTOS_CONFIG_H */
 #endif /* FREERTOSCONFIG_H_ */

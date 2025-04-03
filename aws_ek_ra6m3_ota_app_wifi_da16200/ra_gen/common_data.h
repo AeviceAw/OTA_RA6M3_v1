@@ -9,6 +9,8 @@
 #include "semphr.h"
 #include "FreeRTOS.h"
 #include "semphr.h"
+#include "FreeRTOS.h"
+#include "event_groups.h"
 #include "r_icu.h"
 #include "r_external_irq_api.h"
 
@@ -135,8 +137,8 @@ extern SemaphoreHandle_t g_data_semaphore;
 extern SemaphoreHandle_t g_wifi_semaphore;
 extern SemaphoreHandle_t g_rgb_semaphore;
 extern SemaphoreHandle_t g_publish_semaphore;
-extern SemaphoreHandle_t g_sync_event;
-extern SemaphoreHandle_t g_wifi_event;
+extern EventGroupHandle_t g_wifi_event;
+extern EventGroupHandle_t g_sync_event;
 void g_common_init(void);
 FSP_FOOTER
 #endif /* COMMON_DATA_H_ */

@@ -68,6 +68,6 @@
 #include "Thread_Publish/sramHandler.h"
 #include "Thread_Publish/publishHandler.h"
 
-
+#include "ota.h"
 
 #endif /* INITIALISATIONS_H_ */

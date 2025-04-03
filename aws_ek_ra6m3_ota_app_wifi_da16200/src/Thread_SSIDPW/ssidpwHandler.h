@@ -20,7 +20,7 @@ typedef enum wifi_param{
     WIFI_SSID=0,
     WIFI_PASSWORD=1,
     WIFI_CHANNEL=3,
-    WIFI_SECURITY=4
+//    WIFI_SECURITY=4
 }wifi_param_t;
 
 uint8_t* getWifiSSIDAddr(void);

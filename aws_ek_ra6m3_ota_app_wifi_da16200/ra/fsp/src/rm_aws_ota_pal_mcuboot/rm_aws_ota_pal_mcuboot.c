@@ -349,7 +349,6 @@ OtaPalImageState_t otaPal_GetPlatformImageState (OtaFileContext_t * const pFileC
             break;
         }
 
-        case BOOT_SWAP_TYPE_REVERT:
         case BOOT_SWAP_TYPE_TEST:
         {
             image_state = OtaPalImageStatePendingCommit;

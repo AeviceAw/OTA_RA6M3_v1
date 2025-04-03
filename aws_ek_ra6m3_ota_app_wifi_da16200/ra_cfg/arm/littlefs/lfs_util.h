@@ -34,7 +34,13 @@
         #define LFS_NO_INTRINSICS
         #endif
 
-#define LFS_THREAD_SAFE (0)
+#if (0)
+        #define LFS_THREADSAFE
+        #endif
+
+#if (0)
+        #define LFS_READONLY
+        #endif
 
 /* Defines the LittleFS instance control block to be the stdio wrapper. */
 #define RM_STDIO_LITTLEFS_CFG_LFS g_rm_littlefs0_lfs

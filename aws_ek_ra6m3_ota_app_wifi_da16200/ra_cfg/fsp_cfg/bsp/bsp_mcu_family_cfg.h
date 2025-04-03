@@ -78,6 +78,66 @@
 #define BSP_CFG_ID_CODE_LONG_4 (0xffFFFFFF)
 #endif
 
+#ifndef BSP_CFG_SDRAM_ENABLED
+#define BSP_CFG_SDRAM_ENABLED  (0)
+#endif
+
+#ifndef BSP_CFG_SDRAM_TRAS
+#define BSP_CFG_SDRAM_TRAS  (6)
+#endif
+
+#ifndef BSP_CFG_SDRAM_TRCD
+#define BSP_CFG_SDRAM_TRCD  (3)
+#endif
+
+#ifndef BSP_CFG_SDRAM_TRP
+#define BSP_CFG_SDRAM_TRP  (3)
+#endif
+
+#ifndef BSP_CFG_SDRAM_TWR
+#define BSP_CFG_SDRAM_TWR  (2)
+#endif
+
+#ifndef BSP_CFG_SDRAM_TCL
+#define BSP_CFG_SDRAM_TCL  (3)
+#endif
+
+#ifndef BSP_CFG_SDRAM_TRFC
+#define BSP_CFG_SDRAM_TRFC  (937)
+#endif
+
+#ifndef BSP_CFG_SDRAM_TREFW
+#define BSP_CFG_SDRAM_TREFW  (8)
+#endif
+
+#ifndef BSP_CFG_SDRAM_INIT_ARFI
+#define BSP_CFG_SDRAM_INIT_ARFI  (10)
+#endif
+
+#ifndef BSP_CFG_SDRAM_INIT_ARFC
+#define BSP_CFG_SDRAM_INIT_ARFC  (8)
+#endif
+
+#ifndef BSP_CFG_SDRAM_INIT_PRC
+#define BSP_CFG_SDRAM_INIT_PRC  (3)
+#endif
+
+#ifndef BSP_CFG_SDRAM_MULTIPLEX_ADDR_SHIFT
+#define BSP_CFG_SDRAM_MULTIPLEX_ADDR_SHIFT  (1)
+#endif
+
+#ifndef BSP_CFG_SDRAM_ENDIAN_MODE
+#define BSP_CFG_SDRAM_ENDIAN_MODE  (0)
+#endif
+
+#ifndef BSP_CFG_SDRAM_ACCESS_MODE
+#define BSP_CFG_SDRAM_ACCESS_MODE  (1)
+#endif
+
+#ifndef BSP_CFG_SDRAM_BUS_WIDTH
+#define BSP_CFG_SDRAM_BUS_WIDTH  (0)
+#endif
+
 #ifdef __cplusplus
             }
             #endif

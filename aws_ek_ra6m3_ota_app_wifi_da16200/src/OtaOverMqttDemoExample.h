@@ -9,5 +9,6 @@
 #define OTA_OTAOVERMQTTDEMOEXAMPLE_H_
 
 void flash_cert_init(void);
+void vStartOtaDemo(void);
 
 #endif /* OTA_OTAOVERMQTTDEMOEXAMPLE_H_ */

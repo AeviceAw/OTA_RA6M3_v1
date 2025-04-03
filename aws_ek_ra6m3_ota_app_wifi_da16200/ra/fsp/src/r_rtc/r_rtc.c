@@ -213,7 +213,7 @@ fsp_err_t R_RTC_Open (rtc_ctrl_t * const p_ctrl, rtc_cfg_t const * const p_cfg)
     /* Verify the frequency comparison value for RFRL when using LOCO */
     if (RTC_CLOCK_SOURCE_LOCO == p_cfg->clock_source)
     {
-        FSP_ERROR_RETURN(FSP_SUCCESS != r_rtc_rfrl_validate(p_cfg->freq_compare_value), FSP_ERR_INVALID_ARGUMENT);
+        FSP_ERROR_RETURN(FSP_SUCCESS == r_rtc_rfrl_validate(p_cfg->freq_compare_value), FSP_ERR_INVALID_ARGUMENT);
     }
     /* Validate the error adjustment parameters when using SubClock */
     else
@@ -221,6 +221,12 @@ fsp_err_t R_RTC_Open (rtc_ctrl_t * const p_ctrl, rtc_cfg_t const * const p_cfg)
         FSP_ERROR_RETURN(FSP_SUCCESS == r_rtc_err_adjustment_paramter_check(p_instance_ctrl->p_cfg->p_err_cfg),
                          FSP_ERR_INVALID_ARGUMENT);
     }
+#endif
+
+#if BSP_FEATURE_LPM_RTC_REGISTER_CLOCK_DISABLE
+
+    /* Enable the RTC Register Read/Write clock if it was disabled in startup. */
+    bsp_prv_rtc_register_clock_set(true);
 #endif
 
     p_instance_ctrl->carry_isr_triggered = false;
@@ -293,6 +299,12 @@ fsp_err_t R_RTC_Close (rtc_ctrl_t * const p_ctrl)
         R_BSP_IrqDisable(p_instance_ctrl->p_cfg->carry_irq);
         R_FSP_IsrContextSet(p_instance_ctrl->p_cfg->carry_irq, NULL);
     }
+
+#if BSP_FEATURE_LPM_RTC_REGISTER_CLOCK_DISABLE
+
+    /* Disable the RTC Register Read/Write clock. */
+    bsp_prv_rtc_register_clock_set(false);
+#endif
 
     p_instance_ctrl->open = 0U;
 
@@ -1228,8 +1240,8 @@ static fsp_err_t r_rtc_rfrl_validate (uint32_t value)
 
     /* A value from 0007h through 01FFh can be specified as the frequency comparison value (see section 26.2.20
      * Frequency Register (RFRH/RFRL)" of the RA6M3 manual R01UH0886EJ0100) */
-    if ((RTC_RFRL_MIN_VALUE_LOCO <= value) &&
-        (RTC_RFRL_MAX_VALUE_LOCO >= value))
+    if ((RTC_RFRL_MIN_VALUE_LOCO >= value) ||
+        (RTC_RFRL_MAX_VALUE_LOCO <= value))
     {
         err = FSP_ERR_INVALID_ARGUMENT;
     }
@@ -1613,6 +1625,12 @@ void rtc_alarm_periodic_isr (void)
     IRQn_Type             irq    = R_FSP_CurrentIrqGet();
     rtc_instance_ctrl_t * p_ctrl = (rtc_instance_ctrl_t *) R_FSP_IsrContextGet(irq);
 
+#if BSP_FEATURE_LPM_RTC_REGISTER_CLOCK_DISABLE
+
+    /* Enable the RTC Register Read/Write clock if it was disabled prior to entering LPM. */
+    bsp_prv_rtc_register_clock_set(true);
+#endif
+
     /* Call the callback routine if one is available */
     if (NULL != p_ctrl->p_callback)
     {
@@ -1658,6 +1676,12 @@ void rtc_carry_isr (void)
 
     IRQn_Type             irq    = R_FSP_CurrentIrqGet();
     rtc_instance_ctrl_t * p_ctrl = (rtc_instance_ctrl_t *) R_FSP_IsrContextGet(irq);
+
+#if BSP_FEATURE_LPM_RTC_REGISTER_CLOCK_DISABLE
+
+    /* Enable the RTC Register Read/Write clock if it was disabled prior to entering LPM. */
+    bsp_prv_rtc_register_clock_set(true);
+#endif
 
     p_ctrl->carry_isr_triggered = true;
 

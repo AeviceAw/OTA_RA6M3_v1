@@ -107,6 +107,7 @@ fsp_err_t HW_SCE_ECC_256HrkGenerateSign (const uint32_t * InData_CurveType,
     return err;
 }
 
+ #if (!BSP_FEATURE_CRYPTO_HAS_RSIP_E11A)
 fsp_err_t HW_SCE_ECC_384GenerateSign (const uint32_t * InData_CurveType,
                                       const uint32_t * InData_G,
                                       const uint32_t * InData_PrivKey,
@@ -199,6 +200,7 @@ fsp_err_t HW_SCE_ECC_384HrkGenerateSign (const uint32_t * InData_CurveType,
     return err;
 }
 
+ #endif
 #if BSP_FEATURE_CRYPTO_HAS_RSIP7
 fsp_err_t HW_SCE_ECC_521GenerateSign (const uint32_t * InData_CurveType,
                                       const uint32_t * InData_G,
@@ -293,7 +295,9 @@ fsp_err_t HW_SCE_ECC_256VerifySign (const uint32_t * InData_CurveType,
                                     const uint32_t * InData_S)
 {
     uint32_t signature[HW_SCE_ECDSA_DATA_BYTE_SIZE / 4U] = {0};
+ #if (!BSP_FEATURE_CRYPTO_HAS_RSIP_E11A)
     uint32_t formatted_public_key[ECC_256_FORMATTED_PUBLIC_KEY_LENGTH_WORDS];
+ #endif
     memcpy(signature, InData_R, (HW_SCE_ECDSA_DATA_BYTE_SIZE / 2U));
     memcpy(&signature[(HW_SCE_ECDSA_DATA_BYTE_SIZE / 4U) / 2U], InData_S, (HW_SCE_ECDSA_DATA_BYTE_SIZE / 2U));
     sce_oem_cmd_t key_command;
@@ -318,6 +322,16 @@ fsp_err_t HW_SCE_ECC_256VerifySign (const uint32_t * InData_CurveType,
         p_domain_param = DomainParam_Koblitz_secp256k1;
     }
 
+ #if (BSP_FEATURE_CRYPTO_HAS_RSIP_E11A)
+    FSP_PARAMETER_NOT_USED(key_command);
+    fsp_err_t err = HW_SCE_EcdsaSignatureVerificationSubAdaptor(InData_CurveType,
+                                                                InData_G,
+                                                                InData_PubKey,
+                                                                InData_MsgDgst,
+                                                                signature,
+                                                                p_domain_param);
+ #else
+
     /* Install the plaintext public key to get the formatted public key */
     fsp_err_t err = HW_SCE_GenerateOemKeyIndexPrivate(SCE_OEM_KEY_TYPE_PLAIN,
                                                       key_command,
@@ -335,10 +349,11 @@ fsp_err_t HW_SCE_ECC_256VerifySign (const uint32_t * InData_CurveType,
                                                    signature,
                                                    p_domain_param);
     }
-
+#endif
     return err;
 }
 
+ #if (!BSP_FEATURE_CRYPTO_HAS_RSIP_E11A)
 fsp_err_t HW_SCE_ECC_384VerifySign (const uint32_t * InData_CurveType,
                                     const uint32_t * InData_G,
                                     const uint32_t * InData_PubKey,
@@ -392,7 +407,95 @@ fsp_err_t HW_SCE_ECC_384VerifySign (const uint32_t * InData_CurveType,
     return err;
 }
 
+#endif
+
 #if BSP_FEATURE_CRYPTO_HAS_RSIP7
+fsp_err_t HW_SCE_ECC_255GenerateSign (const uint32_t * InData_CurveType,
+                                      const uint32_t * InData_G,
+                                      const uint32_t * InData_PrivKey,
+                                      const uint32_t * InData_MsgDgst,
+                                      uint32_t       * OutData_R,
+                                      uint32_t       * OutData_S)
+{
+    uint32_t         signature[HW_SCE_ECDSA_DATA_BYTE_SIZE / 4U] = {0};
+    uint32_t         wrapped_private_key[13U];
+    sce_oem_cmd_t    key_command;
+    const uint32_t * p_domain_param;
+
+    /* NIST curve */
+    if (SCE_ECC_CURVE_TYPE_NIST == *InData_CurveType)
+    {
+        key_command    = SCE_OEM_CMD_ECC_P256_PRIVATE;
+        p_domain_param = DomainParam_NIST_Ed25519;
+    }
+    else
+    {
+        key_command    = SCE_OEM_CMD_ECC_SECP256K1_PRIVATE;
+        p_domain_param = DomainParam_Koblitz_secp256k1;
+    }
+
+    /* Install the plaintext private key to get the wrapped key */
+    fsp_err_t err = HW_SCE_GenerateOemKeyIndexPrivate(SCE_OEM_KEY_TYPE_PLAIN,
+                                                      key_command,
+                                                      NULL,
+                                                      NULL,
+                                                      (const uint8_t *) InData_PrivKey,
+                                                      wrapped_private_key);
+    if (FSP_SUCCESS == err)
+    {
+        err = HW_SCE_EcdsaSignatureGenerateSubAdaptor(InData_CurveType,
+                                                      InData_G,
+                                                      wrapped_private_key,
+                                                      InData_MsgDgst,
+                                                      p_domain_param,
+                                                      signature);
+    }
+
+    if (FSP_SUCCESS == err)
+    {
+        memcpy(OutData_R, signature, (HW_SCE_ECDSA_DATA_BYTE_SIZE / 2U));
+        memcpy(OutData_S, &signature[(HW_SCE_ECDSA_DATA_BYTE_SIZE / 4U) / 2U], (HW_SCE_ECDSA_DATA_BYTE_SIZE / 2U));
+    }
+
+    return err;
+}
+
+fsp_err_t HW_SCE_ECC_255HrkGenerateSign (const uint32_t * InData_CurveType,
+                                         const uint32_t * InData_G,
+                                         const uint32_t * InData_KeyIndex,
+                                         const uint32_t * InData_MsgDgst,
+                                         uint32_t       * OutData_R,
+                                         uint32_t       * OutData_S)
+{
+    const uint32_t * p_domain_param;
+
+    /* NIST curve */
+    if (SCE_ECC_CURVE_TYPE_NIST == *InData_CurveType)
+    {
+        p_domain_param = DomainParam_NIST_Ed25519;
+    }
+    /* Koblitz curve */
+    else
+    {
+        p_domain_param = DomainParam_Koblitz_secp256k1;
+    }
+
+    uint32_t  signature[(HW_SCE_ECDSA_DATA_BYTE_SIZE / 4U)] = {0};
+    fsp_err_t err = HW_SCE_EcdsaSignatureGenerateSubAdaptor(InData_CurveType,
+                                                            InData_G,
+                                                            InData_KeyIndex,
+                                                            InData_MsgDgst,
+                                                            p_domain_param,
+                                                            signature);
+    if (FSP_SUCCESS == err)
+    {
+        memcpy(OutData_R, signature, (HW_SCE_ECDSA_DATA_BYTE_SIZE / 2U));
+        memcpy(OutData_S, &signature[(HW_SCE_ECDSA_DATA_BYTE_SIZE / 4U) / 2U], (HW_SCE_ECDSA_DATA_BYTE_SIZE / 2U));
+    }
+
+    return err;
+}
+
 fsp_err_t HW_SCE_ECC_521VerifySign (const uint32_t * InData_CurveType,
                                     const uint32_t * InData_G,
                                     const uint32_t * InData_PubKey,

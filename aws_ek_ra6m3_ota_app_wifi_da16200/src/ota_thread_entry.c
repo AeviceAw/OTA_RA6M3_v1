@@ -19,6 +19,7 @@
 #include "usr_data.h"
 #include "flash/flash_hp.h"
 #include "transport_mbedtls_pkcs11.h"
+#include "initialisations.h"
 
 #include "ota.h"
 /*************************************************************************************
@@ -162,6 +163,8 @@ extern char g_certificate[2048];
 extern char g_private_key[2048];
 extern char g_mqtt_endpoint[128];
 extern char g_code_sign_pkey[256];
+extern uint32_t  g_uart_status;
+extern TaskHandle_t uart_thread;
 
 /*************************************************************************************
  * Private functions
@@ -290,6 +293,9 @@ static mqtt_rx_payload_t mq_data = { RESET_VALUE };
 static char pubPayload[PUBLISH_PAYLOAD_BUFFER_LENGTH_BULK_JSON] = { RESET_VALUE };
 
 static char * public_key = NULL;
+
+uint32_t  g_ota_status = RESET_VALUE;
+
 /*******************************************************************************************************************//**
  * @brief      Application Thread entry function
  * @param[in]   pvParameters     contains TaskHandle_t
@@ -308,8 +314,8 @@ void ota_thread_entry(void *pvParameters)
 
     static uint32_t   sequenceNumber = RESET_VALUE;
     //TODO: Add wait for writing certs to flash
+    bt_status = xTaskNotifyWait(pdFALSE, pdFALSE, &g_uart_status, portMAX_DELAY);
     FSP_PARAMETER_NOT_USED (pvParameters);
-
     flash_cert_init();
     APP_PRINT("Certs hardcoded");
 
@@ -386,10 +392,8 @@ void ota_thread_entry(void *pvParameters)
     xSetMQTTAgentState( MQTT_AGENT_STATE_INITIALIZED );
     vStartMQTTAgent (APP_MAIN_MQTT_AGENT_TASK_STACK_SIZE, APP_MAIN_MQTT_AGENT_TASK_PRIORITY);
 
-#if ENABLE_OTA_UPDATE_DEMO
-    /* Start OTA */
     vStartOtaDemo();
-#endif
+    xEventGroupSetBits(g_sync_event, UART_THREAD);
 
     /******** Attempt to establish TLS session with MQTT broker. **********/
     if( xGetMQTTAgentState() != MQTT_AGENT_STATE_CONNECTED )

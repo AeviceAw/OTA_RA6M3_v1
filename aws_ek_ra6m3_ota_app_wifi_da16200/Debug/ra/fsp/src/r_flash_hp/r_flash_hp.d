@@ -19,19 +19,20 @@ ra/fsp/src/r_flash_hp/r_flash_hp.o: ../ra/fsp/src/r_flash_hp/r_flash_hp.c \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_exceptions.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen/vector_data.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/renesas.h \
- C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h \
- C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h \
+ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/cmsis_compiler.h \
+ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/cmsis_gcc.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/R7FA6M3AH.h \
- C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/core_cm4.h \
- C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_version.h \
- C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h \
- C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/mpu_armv7.h \
+ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/core_cm4.h \
+ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/cmsis_version.h \
+ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/cmsis_compiler.h \
+ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/m-profile/armv7m_mpu.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/system.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/system.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_common.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/inc/api/fsp_common_api.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_compiler_support.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_tfu.h \
+ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_sdram.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_register_protection.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_irq.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_io.h \
@@ -68,19 +69,20 @@ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/board
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_exceptions.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen/vector_data.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/renesas.h:
-C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h:
-C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h:
+C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/cmsis_compiler.h:
+C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/cmsis_gcc.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/R7FA6M3AH.h:
-C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/core_cm4.h:
-C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_version.h:
-C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h:
-C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_5/CMSIS/Core/Include/mpu_armv7.h:
+C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/core_cm4.h:
+C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/cmsis_version.h:
+C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/cmsis_compiler.h:
+C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/CMSIS_6/CMSIS/Core/Include/m-profile/armv7m_mpu.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/system.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/system.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_common.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/inc/api/fsp_common_api.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_compiler_support.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_tfu.h:
+C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_sdram.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_register_protection.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_irq.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/fsp/src/bsp/mcu/all/bsp_io.h:

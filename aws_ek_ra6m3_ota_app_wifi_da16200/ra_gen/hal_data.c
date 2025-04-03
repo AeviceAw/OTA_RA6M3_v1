@@ -33,12 +33,12 @@ const rtc_instance_t g_rtc =
 iwdt_instance_ctrl_t g_iwdt_ctrl;
 
 const wdt_cfg_t g_iwdt_cfg =
-{ .timeout = 0,
-  .clock_division = 0,
-  .window_start = 0,
-  .window_end = 0,
-  .reset_control = 0,
-  .stop_control = 0,
+{ .timeout = (wdt_timeout_t) 0,
+  .clock_division = (wdt_clock_division_t) 0,
+  .window_start = (wdt_window_start_t) 0,
+  .window_end = (wdt_window_end_t) 0,
+  .reset_control = (wdt_reset_control_t) 0,
+  .stop_control = (wdt_stop_control_t) 0,
   .p_callback = NULL, };
 
 /* Instance structure to use this module. */
@@ -94,7 +94,7 @@ const adc_window_cfg_t g_adc_current_detect_window_cfg =
 {
     .compare_mask        =  0,
     .compare_mode_mask   =  0,
-    .compare_cfg         = (0) | (0) | (0) | (ADC_COMPARE_CFG_EVENT_OUTPUT_OR),
+    .compare_cfg         = (adc_compare_cfg_t) ((0) | (0) | (0) | (ADC_COMPARE_CFG_EVENT_OUTPUT_OR)),
     .compare_ref_low     = 0,
     .compare_ref_high    = 0,
     .compare_b_channel   = (ADC_WINDOW_B_CHANNEL_0),
@@ -124,7 +124,7 @@ const adc_instance_t g_adc_current_detect =
 dtc_instance_ctrl_t g_transfer2_ctrl;
 
 #if (1 == 1)
-transfer_info_t g_transfer2_info =
+transfer_info_t g_transfer2_info DTC_TRANSFER_INFO_ALIGNMENT =
 { .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_INCREMENTED,
   .transfer_settings_word_b.repeat_area = TRANSFER_REPEAT_AREA_DESTINATION,
   .transfer_settings_word_b.irq = TRANSFER_IRQ_END,
@@ -139,7 +139,7 @@ transfer_info_t g_transfer2_info =
 
 #elif (1 > 1)
 /* User is responsible to initialize the array. */
-transfer_info_t g_transfer2_info[1];
+transfer_info_t g_transfer2_info[1] DTC_TRANSFER_INFO_ALIGNMENT;
 #else
 /* User must call api::reconfigure before enable DTC transfer. */
 #endif
@@ -164,7 +164,7 @@ const transfer_instance_t g_transfer2 =
 dtc_instance_ctrl_t g_transfer1_ctrl;
 
 #if (1 == 1)
-transfer_info_t g_transfer1_info =
+transfer_info_t g_transfer1_info DTC_TRANSFER_INFO_ALIGNMENT =
 { .transfer_settings_word_b.dest_addr_mode = TRANSFER_ADDR_MODE_FIXED,
   .transfer_settings_word_b.repeat_area = TRANSFER_REPEAT_AREA_SOURCE,
   .transfer_settings_word_b.irq = TRANSFER_IRQ_END,
@@ -179,7 +179,7 @@ transfer_info_t g_transfer1_info =
 
 #elif (1 > 1)
 /* User is responsible to initialize the array. */
-transfer_info_t g_transfer1_info[1];
+transfer_info_t g_transfer1_info[1] DTC_TRANSFER_INFO_ALIGNMENT;
 #else
 /* User must call api::reconfigure before enable DTC transfer. */
 #endif
@@ -236,9 +236,14 @@ const spi_instance_t g_sram =
 { .p_ctrl = &g_sram_ctrl, .p_cfg = &g_sram_cfg, .p_api = &g_spi_on_sci };
 iic_master_instance_ctrl_t g_i2c_rgb_master_ctrl;
 const iic_master_extended_cfg_t g_i2c_rgb_master_extend =
-{ .timeout_mode = IIC_MASTER_TIMEOUT_MODE_SHORT, .timeout_scl_low = IIC_MASTER_TIMEOUT_SCL_LOW_ENABLED,
-/* Actual calculated bitrate: 98945. Actual calculated duty cycle: 51%. */.clock_settings.brl_value = 15,
-  .clock_settings.brh_value = 16, .clock_settings.cks_value = 4, };
+{ .timeout_mode = IIC_MASTER_TIMEOUT_MODE_SHORT,
+  .timeout_scl_low = IIC_MASTER_TIMEOUT_SCL_LOW_ENABLED,
+  .smbus_operation = 0,
+  /* Actual calculated bitrate: 98945. Actual calculated duty cycle: 51%. */.clock_settings.brl_value = 15,
+  .clock_settings.brh_value = 16,
+  .clock_settings.cks_value = 4,
+  .clock_settings.sddl_value = 0,
+  .clock_settings.dlcs_value = 0, };
 const i2c_master_cfg_t g_i2c_rgb_master_cfg =
 { .channel = 0, .rate = I2C_MASTER_RATE_STANDARD, .slave = 0x68, .addr_mode = I2C_MASTER_ADDR_MODE_7BIT,
 #define RA_NOT_DEFINED (1)
