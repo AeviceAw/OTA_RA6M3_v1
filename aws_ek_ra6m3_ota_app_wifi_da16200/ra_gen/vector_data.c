@@ -20,20 +20,16 @@
             [13] = sci_uart_txi_isr, /* SCI9 TXI (Transmit data empty) */
             [14] = sci_uart_tei_isr, /* SCI9 TEI (Transmit end) */
             [15] = sci_uart_eri_isr, /* SCI9 ERI (Receive error) */
-            [16] = sci_uart_rxi_isr, /* SCI0 RXI (Receive data full) */
-            [17] = sci_uart_txi_isr, /* SCI0 TXI (Transmit data empty) */
-            [18] = sci_uart_tei_isr, /* SCI0 TEI (Transmit end) */
-            [19] = sci_uart_eri_isr, /* SCI0 ERI (Receive error) */
-            [20] = sci_uart_rxi_isr, /* SCI8 RXI (Receive data full) */
-            [21] = sci_uart_txi_isr, /* SCI8 TXI (Transmit data empty) */
-            [22] = sci_uart_tei_isr, /* SCI8 TEI (Transmit end) */
-            [23] = sci_uart_eri_isr, /* SCI8 ERI (Receive error) */
-            [24] = gpt_counter_overflow_isr, /* GPT0 COUNTER OVERFLOW (Overflow) */
-            [25] = gpt_counter_overflow_isr, /* GPT2 COUNTER OVERFLOW (Overflow) */
-            [26] = gpt_counter_overflow_isr, /* GPT3 COUNTER OVERFLOW (Overflow) */
-            [27] = r_icu_isr, /* ICU IRQ1 (External pin interrupt 1) */
-            [28] = fcu_frdyi_isr, /* FCU FRDYI (Flash ready interrupt) */
-            [29] = fcu_fiferr_isr, /* FCU FIFERR (Flash access error interrupt) */
+            [16] = fcu_frdyi_isr, /* FCU FRDYI (Flash ready interrupt) */
+            [17] = fcu_fiferr_isr, /* FCU FIFERR (Flash access error interrupt) */
+            [18] = sci_uart_rxi_isr, /* SCI8 RXI (Receive data full) */
+            [19] = sci_uart_txi_isr, /* SCI8 TXI (Transmit data empty) */
+            [20] = sci_uart_tei_isr, /* SCI8 TEI (Transmit end) */
+            [21] = sci_uart_eri_isr, /* SCI8 ERI (Receive error) */
+            [22] = gpt_counter_overflow_isr, /* GPT0 COUNTER OVERFLOW (Overflow) */
+            [23] = gpt_counter_overflow_isr, /* GPT2 COUNTER OVERFLOW (Overflow) */
+            [24] = gpt_counter_overflow_isr, /* GPT3 COUNTER OVERFLOW (Overflow) */
+            [25] = r_icu_isr, /* ICU IRQ1 (External pin interrupt 1) */
         };
         #if BSP_FEATURE_ICU_HAS_IELSR
         const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_MAX_ENTRIES] =
@@ -54,20 +50,16 @@
             [13] = BSP_PRV_VECT_ENUM(EVENT_SCI9_TXI,GROUP5), /* SCI9 TXI (Transmit data empty) */
             [14] = BSP_PRV_VECT_ENUM(EVENT_SCI9_TEI,GROUP6), /* SCI9 TEI (Transmit end) */
             [15] = BSP_PRV_VECT_ENUM(EVENT_SCI9_ERI,GROUP7), /* SCI9 ERI (Receive error) */
-            [16] = BSP_PRV_VECT_ENUM(EVENT_SCI0_RXI,GROUP0), /* SCI0 RXI (Receive data full) */
-            [17] = BSP_PRV_VECT_ENUM(EVENT_SCI0_TXI,GROUP1), /* SCI0 TXI (Transmit data empty) */
-            [18] = BSP_PRV_VECT_ENUM(EVENT_SCI0_TEI,GROUP2), /* SCI0 TEI (Transmit end) */
-            [19] = BSP_PRV_VECT_ENUM(EVENT_SCI0_ERI,GROUP3), /* SCI0 ERI (Receive error) */
-            [20] = BSP_PRV_VECT_ENUM(EVENT_SCI8_RXI,GROUP4), /* SCI8 RXI (Receive data full) */
-            [21] = BSP_PRV_VECT_ENUM(EVENT_SCI8_TXI,GROUP5), /* SCI8 TXI (Transmit data empty) */
-            [22] = BSP_PRV_VECT_ENUM(EVENT_SCI8_TEI,GROUP6), /* SCI8 TEI (Transmit end) */
-            [23] = BSP_PRV_VECT_ENUM(EVENT_SCI8_ERI,GROUP7), /* SCI8 ERI (Receive error) */
-            [24] = BSP_PRV_VECT_ENUM(EVENT_GPT0_COUNTER_OVERFLOW,GROUP0), /* GPT0 COUNTER OVERFLOW (Overflow) */
-            [25] = BSP_PRV_VECT_ENUM(EVENT_GPT2_COUNTER_OVERFLOW,GROUP1), /* GPT2 COUNTER OVERFLOW (Overflow) */
-            [26] = BSP_PRV_VECT_ENUM(EVENT_GPT3_COUNTER_OVERFLOW,GROUP2), /* GPT3 COUNTER OVERFLOW (Overflow) */
-            [27] = BSP_PRV_VECT_ENUM(EVENT_ICU_IRQ1,GROUP3), /* ICU IRQ1 (External pin interrupt 1) */
-            [28] = BSP_PRV_VECT_ENUM(EVENT_FCU_FRDYI,GROUP4), /* FCU FRDYI (Flash ready interrupt) */
-            [29] = BSP_PRV_VECT_ENUM(EVENT_FCU_FIFERR,GROUP5), /* FCU FIFERR (Flash access error interrupt) */
+            [16] = BSP_PRV_VECT_ENUM(EVENT_FCU_FRDYI,GROUP0), /* FCU FRDYI (Flash ready interrupt) */
+            [17] = BSP_PRV_VECT_ENUM(EVENT_FCU_FIFERR,GROUP1), /* FCU FIFERR (Flash access error interrupt) */
+            [18] = BSP_PRV_VECT_ENUM(EVENT_SCI8_RXI,GROUP2), /* SCI8 RXI (Receive data full) */
+            [19] = BSP_PRV_VECT_ENUM(EVENT_SCI8_TXI,GROUP3), /* SCI8 TXI (Transmit data empty) */
+            [20] = BSP_PRV_VECT_ENUM(EVENT_SCI8_TEI,GROUP4), /* SCI8 TEI (Transmit end) */
+            [21] = BSP_PRV_VECT_ENUM(EVENT_SCI8_ERI,GROUP5), /* SCI8 ERI (Receive error) */
+            [22] = BSP_PRV_VECT_ENUM(EVENT_GPT0_COUNTER_OVERFLOW,GROUP6), /* GPT0 COUNTER OVERFLOW (Overflow) */
+            [23] = BSP_PRV_VECT_ENUM(EVENT_GPT2_COUNTER_OVERFLOW,GROUP7), /* GPT2 COUNTER OVERFLOW (Overflow) */
+            [24] = BSP_PRV_VECT_ENUM(EVENT_GPT3_COUNTER_OVERFLOW,GROUP0), /* GPT3 COUNTER OVERFLOW (Overflow) */
+            [25] = BSP_PRV_VECT_ENUM(EVENT_ICU_IRQ1,GROUP1), /* ICU IRQ1 (External pin interrupt 1) */
         };
         #endif
         #endif

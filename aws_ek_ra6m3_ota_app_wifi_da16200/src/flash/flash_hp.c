@@ -14,7 +14,7 @@
 #include "common_utils.h"
 #include "demo_config.h"
 #include "usr_network.h"
-#include "ssidpw_thread.h"
+#include "wifi_thread.h"
 /* Flags, set from Callback function */
 static volatile _Bool is_b_flash_event_not_blank = false;
 static volatile _Bool is_b_flash_event_blank = false;
@@ -718,8 +718,8 @@ fsp_err_t check_credentials_stored(void)
     err = flash_stored_data_info ();
     assert(FSP_SUCCESS == err);
     /* Clear screen */
-    sprintf (s_print_buffer, "%s%s", gp_clear_screen, gp_cursor_home);
-    APP_PRINT ((void*) s_print_buffer);
+//    sprintf (s_print_buffer, "%s%s", gp_clear_screen, gp_cursor_home);
+//    APP_PRINT ((void*) s_print_buffer);
 
     /* Print credential check menu title */
     sprintf (s_print_buffer, FLASH_CHECK_CREDENTIALS);

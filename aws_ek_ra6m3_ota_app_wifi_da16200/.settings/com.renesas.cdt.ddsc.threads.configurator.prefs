@@ -15,7 +15,6 @@ collapse/module.driver.sce7.206171893=false
 collapse/module.driver.spi_on_sci_spi.2055413714=false
 collapse/module.driver.uart_on_sci_uart.1295560712=false
 collapse/module.driver.uart_on_sci_uart.1417808463=false
-collapse/module.driver.uart_on_sci_uart.1625418517=false
 collapse/module.driver.wifi_da16xxx.1692316528=false
 collapse/module.middleware.mcuboot_image_utilities.1391881334=false
 collapse/module.middleware.rm_aws_ota_pal_mcuboot.415948721=false

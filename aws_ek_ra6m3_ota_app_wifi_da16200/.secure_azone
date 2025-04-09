@@ -47,7 +47,6 @@
         <peripheral name="ADC0" group="ADC" security=""/>
         <peripheral name="RTC" security=""/>
         <peripheral name="SCI9" group="SCI" security=""/>
-        <peripheral name="SCI0" group="SCI" security=""/>
         <peripheral name="SCI8" group="SCI" security=""/>
         <peripheral name="GPT2" group="GPT" security=""/>
         <peripheral name="GPT3" group="GPT" security=""/>
@@ -81,10 +80,6 @@
             <slot name="IRQ23" secure="false"/>
             <slot name="IRQ24" secure="false"/>
             <slot name="IRQ25" secure="false"/>
-            <slot name="IRQ26" secure="false"/>
-            <slot name="IRQ27" secure="false"/>
-            <slot name="IRQ28" secure="false"/>
-            <slot name="IRQ29" secure="false"/>
         </peripheral>
     </partition>
 </azone>

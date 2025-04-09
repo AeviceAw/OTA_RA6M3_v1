@@ -6,17 +6,12 @@ uint32_t g_uartOK=0;           // Count UART OK
 uint32_t g_uartNOK=0;          // Count UART NOK
 uint32_t uart_awsNOK = 0;         // Count buttonpressed
 extern TaskHandle_t uart_thread;
-extern TaskHandle_t ota_thread;
-extern uint32_t  g_ota_status;
-
-uint32_t  g_uart_status = RESET_VALUE;
 
 /* Uart Thread entry function */
 /* pvParameters contains TaskHandle_t */
 void uart_thread_entry(void *pvParameters){
     FSP_PARAMETER_NOT_USED (pvParameters);
     fsp_err_t   status = FSP_ERR_ASSERTION;
-    BaseType_t  bt_status   = pdFALSE;
     EventBits_t uxBits;
     uint8_t     euart = 0;
 
@@ -49,7 +44,6 @@ void uart_thread_entry(void *pvParameters){
 
 
     vTaskDelay(5000); // Delay Uart to let RGB Finish running first
-    xTaskNotifyFromISR(ota_thread, 1, 1, NULL);
 
     while (1)    {
         // Wait for UART_THREAD Bit to be set

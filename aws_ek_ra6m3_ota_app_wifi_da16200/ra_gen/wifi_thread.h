@@ -11,19 +11,18 @@
                 #else
 extern void wifi_thread_entry(void *pvParameters);
 #endif
-#include "r_sci_uart.h"
-#include "r_uart_api.h"
+#include "r_flash_hp.h"
+#include "r_flash_api.h"
 FSP_HEADER
-/** UART on SCI Instance. */
-extern const uart_instance_t g_wifi0;
+/* Flash on Flash HP Instance */
+extern const flash_instance_t user_flash;
 
-/** Access the UART instance using these structures when calling API functions directly (::p_api is not used). */
-extern sci_uart_instance_ctrl_t g_wifi0_ctrl;
-extern const uart_cfg_t g_wifi0_cfg;
-extern const sci_uart_extended_cfg_t g_wifi0_cfg_extend;
+/** Access the Flash HP instance using these structures when calling API functions directly (::p_api is not used). */
+extern flash_hp_instance_ctrl_t user_flash_ctrl;
+extern const flash_cfg_t user_flash_cfg;
 
-#ifndef Da16200_uart_callback
-void Da16200_uart_callback(uart_callback_args_t *p_args);
+#ifndef flash_callback
+void flash_callback(flash_callback_args_t *p_args);
 #endif
 FSP_FOOTER
 #endif /* WIFI_THREAD_H_ */

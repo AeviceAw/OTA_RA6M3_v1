@@ -14,24 +14,6 @@ void ssidpw_thread_create(void);
 static void ssidpw_thread_func(void *pvParameters);
 void rtos_startup_err_callback(void *p_instance, void *p_data);
 void rtos_startup_common_init(void);
-flash_hp_instance_ctrl_t user_flash_ctrl;
-const flash_cfg_t user_flash_cfg =
-{ .data_flash_bgo = true, .p_callback = flash_callback, .p_context = NULL,
-#if defined(VECTOR_NUMBER_FCU_FRDYI)
-    .irq                 = VECTOR_NUMBER_FCU_FRDYI,
-#else
-  .irq = FSP_INVALID_VECTOR,
-#endif
-#if defined(VECTOR_NUMBER_FCU_FIFERR)
-    .err_irq             = VECTOR_NUMBER_FCU_FIFERR,
-#else
-  .err_irq = FSP_INVALID_VECTOR,
-#endif
-  .err_ipl = (2),
-  .ipl = (2), };
-/* Instance structure to use this module. */
-const flash_instance_t user_flash =
-{ .p_ctrl = &user_flash_ctrl, .p_cfg = &user_flash_cfg, .p_api = &g_flash_on_flash_hp };
 flash_hp_instance_ctrl_t g_flash_ctrl;
 const flash_cfg_t g_flash_cfg =
 { .data_flash_bgo = true, .p_callback = bgo_callback, .p_context = NULL,

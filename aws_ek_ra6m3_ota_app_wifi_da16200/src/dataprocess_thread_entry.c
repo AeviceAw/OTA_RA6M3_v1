@@ -1,6 +1,7 @@
 #include "initialisations.h"
 #define DATAPROCESS_ON 1
 
+#define DO_THE_THING
 #ifdef DO_THE_THING
 
 uint32_t g_dataEntry_count=0;

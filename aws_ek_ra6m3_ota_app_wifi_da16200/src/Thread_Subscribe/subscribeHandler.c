@@ -10,6 +10,8 @@
 char g_seqResend[60]={'\0'};
 char g_idResend[10]={'\0'};
 
+extern TaskHandle_t ota_thread;
+
 /**********************************************************************************************************************
  *  @brief       assert if wifi_uart received AP disconnected reply:
  *
@@ -411,7 +413,7 @@ void decodeDurState(int8_t dur){
         } // end (87: IMU=1)
         case 88:{
             /* Start OTA */
-            vStartOtaDemo();
+            xTaskNotifyFromISR(ota_thread, 1, 1, NULL);
             ////APP_PRINT("DUR(%02d): IMU to be awlays on\n",dur);
             break;
         } // end (88: OTA init)

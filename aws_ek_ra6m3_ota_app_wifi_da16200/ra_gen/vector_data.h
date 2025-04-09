@@ -6,7 +6,7 @@
         #endif
 /* Number of interrupts allocated */
 #ifndef VECTOR_DATA_IRQ_COUNT
-#define VECTOR_DATA_IRQ_COUNT    (30)
+#define VECTOR_DATA_IRQ_COUNT    (26)
 #endif
 /* ISR prototypes */
 void gpt_counter_overflow_isr(void);
@@ -25,9 +25,9 @@ void sci_uart_rxi_isr(void);
 void sci_uart_txi_isr(void);
 void sci_uart_tei_isr(void);
 void sci_uart_eri_isr(void);
-void r_icu_isr(void);
 void fcu_frdyi_isr(void);
 void fcu_fiferr_isr(void);
+void r_icu_isr(void);
 
 /* Vector table allocations */
 #define VECTOR_NUMBER_GPT1_COUNTER_OVERFLOW ((IRQn_Type) 0) /* GPT1 COUNTER OVERFLOW (Overflow) */
@@ -62,34 +62,26 @@ void fcu_fiferr_isr(void);
 #define SCI9_TEI_IRQn          ((IRQn_Type) 14) /* SCI9 TEI (Transmit end) */
 #define VECTOR_NUMBER_SCI9_ERI ((IRQn_Type) 15) /* SCI9 ERI (Receive error) */
 #define SCI9_ERI_IRQn          ((IRQn_Type) 15) /* SCI9 ERI (Receive error) */
-#define VECTOR_NUMBER_SCI0_RXI ((IRQn_Type) 16) /* SCI0 RXI (Receive data full) */
-#define SCI0_RXI_IRQn          ((IRQn_Type) 16) /* SCI0 RXI (Receive data full) */
-#define VECTOR_NUMBER_SCI0_TXI ((IRQn_Type) 17) /* SCI0 TXI (Transmit data empty) */
-#define SCI0_TXI_IRQn          ((IRQn_Type) 17) /* SCI0 TXI (Transmit data empty) */
-#define VECTOR_NUMBER_SCI0_TEI ((IRQn_Type) 18) /* SCI0 TEI (Transmit end) */
-#define SCI0_TEI_IRQn          ((IRQn_Type) 18) /* SCI0 TEI (Transmit end) */
-#define VECTOR_NUMBER_SCI0_ERI ((IRQn_Type) 19) /* SCI0 ERI (Receive error) */
-#define SCI0_ERI_IRQn          ((IRQn_Type) 19) /* SCI0 ERI (Receive error) */
-#define VECTOR_NUMBER_SCI8_RXI ((IRQn_Type) 20) /* SCI8 RXI (Receive data full) */
-#define SCI8_RXI_IRQn          ((IRQn_Type) 20) /* SCI8 RXI (Receive data full) */
-#define VECTOR_NUMBER_SCI8_TXI ((IRQn_Type) 21) /* SCI8 TXI (Transmit data empty) */
-#define SCI8_TXI_IRQn          ((IRQn_Type) 21) /* SCI8 TXI (Transmit data empty) */
-#define VECTOR_NUMBER_SCI8_TEI ((IRQn_Type) 22) /* SCI8 TEI (Transmit end) */
-#define SCI8_TEI_IRQn          ((IRQn_Type) 22) /* SCI8 TEI (Transmit end) */
-#define VECTOR_NUMBER_SCI8_ERI ((IRQn_Type) 23) /* SCI8 ERI (Receive error) */
-#define SCI8_ERI_IRQn          ((IRQn_Type) 23) /* SCI8 ERI (Receive error) */
-#define VECTOR_NUMBER_GPT0_COUNTER_OVERFLOW ((IRQn_Type) 24) /* GPT0 COUNTER OVERFLOW (Overflow) */
-#define GPT0_COUNTER_OVERFLOW_IRQn          ((IRQn_Type) 24) /* GPT0 COUNTER OVERFLOW (Overflow) */
-#define VECTOR_NUMBER_GPT2_COUNTER_OVERFLOW ((IRQn_Type) 25) /* GPT2 COUNTER OVERFLOW (Overflow) */
-#define GPT2_COUNTER_OVERFLOW_IRQn          ((IRQn_Type) 25) /* GPT2 COUNTER OVERFLOW (Overflow) */
-#define VECTOR_NUMBER_GPT3_COUNTER_OVERFLOW ((IRQn_Type) 26) /* GPT3 COUNTER OVERFLOW (Overflow) */
-#define GPT3_COUNTER_OVERFLOW_IRQn          ((IRQn_Type) 26) /* GPT3 COUNTER OVERFLOW (Overflow) */
-#define VECTOR_NUMBER_ICU_IRQ1 ((IRQn_Type) 27) /* ICU IRQ1 (External pin interrupt 1) */
-#define ICU_IRQ1_IRQn          ((IRQn_Type) 27) /* ICU IRQ1 (External pin interrupt 1) */
-#define VECTOR_NUMBER_FCU_FRDYI ((IRQn_Type) 28) /* FCU FRDYI (Flash ready interrupt) */
-#define FCU_FRDYI_IRQn          ((IRQn_Type) 28) /* FCU FRDYI (Flash ready interrupt) */
-#define VECTOR_NUMBER_FCU_FIFERR ((IRQn_Type) 29) /* FCU FIFERR (Flash access error interrupt) */
-#define FCU_FIFERR_IRQn          ((IRQn_Type) 29) /* FCU FIFERR (Flash access error interrupt) */
+#define VECTOR_NUMBER_FCU_FRDYI ((IRQn_Type) 16) /* FCU FRDYI (Flash ready interrupt) */
+#define FCU_FRDYI_IRQn          ((IRQn_Type) 16) /* FCU FRDYI (Flash ready interrupt) */
+#define VECTOR_NUMBER_FCU_FIFERR ((IRQn_Type) 17) /* FCU FIFERR (Flash access error interrupt) */
+#define FCU_FIFERR_IRQn          ((IRQn_Type) 17) /* FCU FIFERR (Flash access error interrupt) */
+#define VECTOR_NUMBER_SCI8_RXI ((IRQn_Type) 18) /* SCI8 RXI (Receive data full) */
+#define SCI8_RXI_IRQn          ((IRQn_Type) 18) /* SCI8 RXI (Receive data full) */
+#define VECTOR_NUMBER_SCI8_TXI ((IRQn_Type) 19) /* SCI8 TXI (Transmit data empty) */
+#define SCI8_TXI_IRQn          ((IRQn_Type) 19) /* SCI8 TXI (Transmit data empty) */
+#define VECTOR_NUMBER_SCI8_TEI ((IRQn_Type) 20) /* SCI8 TEI (Transmit end) */
+#define SCI8_TEI_IRQn          ((IRQn_Type) 20) /* SCI8 TEI (Transmit end) */
+#define VECTOR_NUMBER_SCI8_ERI ((IRQn_Type) 21) /* SCI8 ERI (Receive error) */
+#define SCI8_ERI_IRQn          ((IRQn_Type) 21) /* SCI8 ERI (Receive error) */
+#define VECTOR_NUMBER_GPT0_COUNTER_OVERFLOW ((IRQn_Type) 22) /* GPT0 COUNTER OVERFLOW (Overflow) */
+#define GPT0_COUNTER_OVERFLOW_IRQn          ((IRQn_Type) 22) /* GPT0 COUNTER OVERFLOW (Overflow) */
+#define VECTOR_NUMBER_GPT2_COUNTER_OVERFLOW ((IRQn_Type) 23) /* GPT2 COUNTER OVERFLOW (Overflow) */
+#define GPT2_COUNTER_OVERFLOW_IRQn          ((IRQn_Type) 23) /* GPT2 COUNTER OVERFLOW (Overflow) */
+#define VECTOR_NUMBER_GPT3_COUNTER_OVERFLOW ((IRQn_Type) 24) /* GPT3 COUNTER OVERFLOW (Overflow) */
+#define GPT3_COUNTER_OVERFLOW_IRQn          ((IRQn_Type) 24) /* GPT3 COUNTER OVERFLOW (Overflow) */
+#define VECTOR_NUMBER_ICU_IRQ1 ((IRQn_Type) 25) /* ICU IRQ1 (External pin interrupt 1) */
+#define ICU_IRQ1_IRQn          ((IRQn_Type) 25) /* ICU IRQ1 (External pin interrupt 1) */
 #ifdef __cplusplus
         }
         #endif

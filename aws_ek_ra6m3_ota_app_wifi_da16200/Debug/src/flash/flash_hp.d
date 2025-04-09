@@ -255,7 +255,7 @@ src/flash/flash_hp.o: ../src/flash/flash_hp.c \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/include/aws_clientcredential_keys.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/include/iot_default_root_certificates.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/usr_network.h \
- C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen/ssidpw_thread.h \
+ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen/wifi_thread.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS/Source/include/task.h \
  C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen/hal_data.h
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/flash/flash_hp.h:
@@ -514,6 +514,6 @@ C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agen
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/include/aws_clientcredential_keys.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/agent/common/include/iot_default_root_certificates.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/src/usr_network.h:
-C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen/ssidpw_thread.h:
+C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen/wifi_thread.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra/aws/FreeRTOS/FreeRTOS/Source/include/task.h:
 C:/Users/liren/Documents/aeviceMD_OTA/aws_ek_ra6m3_ota_app_wifi_da16200/ra_gen/hal_data.h:

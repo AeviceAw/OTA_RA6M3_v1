@@ -30,8 +30,8 @@ fsp_err_t wifi_uart_init(void){
     volatile fsp_err_t err = FSP_SUCCESS;
 
     /* Initialize UART channel with baud rate 115200 */
-    err = R_SCI_UART_Open (&g_wifi0_ctrl, &g_wifi0_cfg);
-    //err = g_wifi0.p_api->open(g_wifi0.p_ctrl, g_wifi0.p_cfg);
+    err = R_SCI_UART_Open (&g_uart0_ctrl, &g_uart0_cfg);
+    //err = g_uart0.p_api->open(g_uart0.p_ctrl, g_uart0.p_cfg);
 
     ////if (FSP_SUCCESS != err)
     ////APP_PRINT ("\r\n**  R_SCI_UART_Open API failed  **\r\n");
@@ -49,8 +49,8 @@ fsp_err_t wifi_uart_deinit(void){
     fsp_err_t err = FSP_SUCCESS;
 
     /* Close module */
-    err =  R_SCI_UART_Close (&g_wifi0_ctrl);
-    //err = g_wifi0.p_api->close(g_wifi0.p_ctrl);
+    err =  R_SCI_UART_Close (&g_uart0_ctrl);
+    //err = g_uart0.p_api->close(g_uart0.p_ctrl);
 
     ////if (FSP_SUCCESS != err)
     ////APP_PRINT ("\r\n**  R_SCI_UART_Close API failed  ** \r\n");
@@ -371,8 +371,8 @@ fsp_err_t sendBuffToWifiUart(char*g_buf,uint32_t buf_len,uint32_t txWait,char* w
         g_rx_flag = 0;             // Unused: Initialized for consistency
 
         /* Send Buf to UART TX*/
-        //status = g_wifi0.p_api->write(g_wifi0.p_ctrl, (uint8_t*)t_buf, (uint32_t) buf_len);
-        status = R_SCI_UART_Write (&g_wifi0_ctrl, (uint8_t*)t_buf,(uint32_t) buf_len);
+        //status = g_uart0.p_api->write(g_uart0.p_ctrl, (uint8_t*)t_buf, (uint32_t) buf_len);
+        status = R_SCI_UART_Write (&g_uart0_ctrl, (uint8_t*)t_buf,(uint32_t) buf_len);
 
         /* Error Handling */
         if (status==FSP_SUCCESS){
@@ -454,8 +454,8 @@ fsp_err_t sendBuffToWifiUart(char*g_buf,uint32_t buf_len,uint32_t txWait,char* w
 //        g_rx_flag = 0;             // Unused: Initialized for consistency
 //
 //        /* Send Buf to UART TX*/
-//        //status = g_wifi0.p_api->write(g_wifi0.p_ctrl, (uint8_t*)t_buf, (uint32_t) buf_len);
-//        status = R_SCI_UART_Write (&g_wifi0_ctrl, (uint8_t*)t_buf,(uint32_t) buf_len);
+//        //status = g_uart0.p_api->write(g_uart0.p_ctrl, (uint8_t*)t_buf, (uint32_t) buf_len);
+//        status = R_SCI_UART_Write (&g_uart0_ctrl, (uint8_t*)t_buf,(uint32_t) buf_len);
 //
 //        /* Error Handling */
 //        if (status==FSP_SUCCESS){

@@ -64,9 +64,9 @@
       <configSetting altId="p100.output.low" configurationId="p100"/>
       <configSetting altId="p403.output.low" configurationId="p403"/>
       <configSetting altId="p800.output.low" configurationId="p800"/>
-      <configSetting altId="sci0.cts.p413" configurationId="sci0.cts" isUsedByDriver="true"/>
-      <configSetting altId="sci0.rxd.p410" configurationId="sci0.rxd" isUsedByDriver="true"/>
-      <configSetting altId="sci0.txd.p411" configurationId="sci0.txd" isUsedByDriver="true"/>
+      <configSetting altId="sci0.cts.p413" configurationId="sci0.cts"/>
+      <configSetting altId="sci0.rxd.p410" configurationId="sci0.rxd"/>
+      <configSetting altId="sci0.txd.p411" configurationId="sci0.txd"/>
       <configSetting altId="sci6.rxd.p304" configurationId="sci6.rxd" isUsedByDriver="true"/>
       <configSetting altId="sci6.sck.p306" configurationId="sci6.sck" isUsedByDriver="true"/>
       <configSetting altId="sci6.txd.p305" configurationId="sci6.txd" isUsedByDriver="true"/>

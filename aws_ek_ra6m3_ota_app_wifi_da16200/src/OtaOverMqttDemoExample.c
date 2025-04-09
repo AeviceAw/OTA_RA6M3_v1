@@ -83,7 +83,7 @@
 
 #include "aws.h"
 #include "flash/flash_hp.h"
-#include "ssidpw_thread.h"
+#include "wifi_thread.h"
 
 /*------------- Demo configurations -------------------------*/
 
@@ -269,7 +269,7 @@ extern char g_iot_thing_name[128];
 char g_write_buffer[2048];
 bool g_cred = false;
 
-#define aevice_wifi "AU-Router 201607130713\r"
+#define aevice_wifi "AE-Router 201607130713\r"
 /*---------------------------------------------------------*/
 
 /**
@@ -1436,7 +1436,6 @@ void flash_cert_init(void)
         APP_ERR_TRAP(err);
     }
 
-
     memcpy(g_write_buffer,DEVICE_CERT,sizeof(DEVICE_CERT));
     err = aws_certficate_write (0);
     memcpy(g_write_buffer,DEVICE_KEY,sizeof(DEVICE_KEY));
@@ -1449,6 +1448,7 @@ void flash_cert_init(void)
     err = aws_certficate_write (2);
     memcpy(g_write_buffer,aevice_wifi,sizeof(aevice_wifi));
     err = aws_certficate_write (5);
+
 
     if (FSP_SUCCESS != err)
         {
