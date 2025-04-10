@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <cHelpSettings>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    
+    
     
     
     
@@ -118,7 +120,9 @@
     
     
     <project name="bootloader_ek_ra6m3">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        
+        
         
         
         
@@ -199,7 +203,9 @@
         
         
         <provider id="org.eclipse.cdt.ui.provider1"/>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        
+        
         
         
         
@@ -280,7 +286,9 @@
         
         
         <provider id="org.eclipse.linuxtools.cdt.libhover.provider"/>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    
+    
     
     
     
@@ -361,8 +369,10 @@
     
     
     </project>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 
+    
+    
     
     
     
@@ -482,7 +492,9 @@
         <provider id="org.eclipse.cdt.ui.provider1"/>
         <provider id="org.eclipse.linuxtools.cdt.libhover.provider"/>
     </project>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+
 
 
 
