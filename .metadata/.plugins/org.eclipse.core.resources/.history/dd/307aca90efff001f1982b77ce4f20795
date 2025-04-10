@@ -1,0 +1,201 @@
+/***********************************************************************************************************************
+ * File Name    : console_thread_entry.c
+ * Description  : Contains data structures and functions used in Console related application
+ **********************************************************************************************************************/
+/***********************************************************************************************************************
+* Copyright (c) 2020 - 2025 Renesas Electronics Corporation and/or its affiliates
+*
+* SPDX-License-Identifier: BSD-3-Clause
+***********************************************************************************************************************/
+#include "hal_data.h"
+#include "common_init.h"
+#include "common_data.h"
+#include "common_utils.h"
+#include "console_menu/console.h"
+#include "board_cfg.h"
+#include "console_thread.h"
+#include "common_utils.h"
+#include "console_menu/menu_main.h"
+#include "console_menu/menu_kis.h"
+#include "flash/flash_hp.h"
+
+
+char mqtt_host[128] = "a3diwcjwt78ey7-ats.iot.ap-southeast-1.amazonaws.com";
+char mqtt_client_identifier[128] = "ra6m3_ota_demo_thing";
+char aevice_wifi[] = "AU-Router 201607130713";
+
+char dd_rootca[2048] =  "-----BEGIN CERTIFICATE-----\n"\
+"MIIDQTCCAimgAwIBAgITBmyfz5m/jAo54vB4ikPmljZbyjANBgkqhkiG9w0BAQsF\n"\
+"ADA5MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRkwFwYDVQQDExBBbWF6\n"\
+"b24gUm9vdCBDQSAxMB4XDTE1MDUyNjAwMDAwMFoXDTM4MDExNzAwMDAwMFowOTEL\n"\
+"MAkGA1UEBhMCVVMxDzANBgNVBAoTBkFtYXpvbjEZMBcGA1UEAxMQQW1hem9uIFJv\n"\
+"b3QgQ0EgMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJ4gHHKeNXj\n"\
+"ca9HgFB0fW7Y14h29Jlo91ghYPl0hAEvrAIthtOgQ3pOsqTQNroBvo3bSMgHFzZM\n"\
+"9O6II8c+6zf1tRn4SWiw3te5djgdYZ6k/oI2peVKVuRF4fn9tBb6dNqcmzU5L/qw\n"\
+"IFAGbHrQgLKm+a/sRxmPUDgH3KKHOVj4utWp+UhnMJbulHheb4mjUcAwhmahRWa6\n"\
+"VOujw5H5SNz/0egwLX0tdHA114gk957EWW67c4cX8jJGKLhD+rcdqsq08p8kDi1L\n"\
+"93FcXmn/6pUCyziKrlA4b9v7LWIbxcceVOF34GfID5yHI9Y/QCB/IIDEgEw+OyQm\n"\
+"jgSubJrIqg0CAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMC\n"\
+"AYYwHQYDVR0OBBYEFIQYzIU07LwMlJQuCFmcx7IQTgoIMA0GCSqGSIb3DQEBCwUA\n"\
+"A4IBAQCY8jdaQZChGsV2USggNiMOruYou6r4lK5IpDB/G/wkjUu0yKGX9rbxenDI\n"\
+"U5PMCCjjmCXPI6T53iHTfIUJrU6adTrCC2qJeHZERxhlbI1Bjjt/msv0tadQ1wUs\n"\
+"N+gDS63pYaACbvXy8MWy7Vu33PqUXHeeE6V/Uq2V8viTO96LXFvKWlJbYK8U90vv\n"\
+"o/ufQJVtMVT8QtPHRh8jrdkPSHCa2XV4cdFyQzR1bldZwgJcJmApzyMZFo6IQ6XU\n"\
+"5MsI+yMRQ+hDKXJioaldXgjUkK642M4UwtBV8ob2xJNDd2ZhwLnoQdeXeGADbkpy\n"\
+"rqXRfboQnoZsG4q5WTP468SQvvG5\n"\
+"-----END CERTIFICATE-----";
+
+char ddevice_cert[2048] = "-----BEGIN CERTIFICATE-----\n"\
+"MIIDWjCCAkKgAwIBAgIVAITYFXftMQ/4ddyQ8mkRregWq5lWMA0GCSqGSIb3DQEB\n"\
+"CwUAME0xSzBJBgNVBAsMQkFtYXpvbiBXZWIgU2VydmljZXMgTz1BbWF6b24uY29t\n"\
+"IEluYy4gTD1TZWF0dGxlIFNUPVdhc2hpbmd0b24gQz1VUzAeFw0yNDEwMTcwMTIz\n"\
+"NTRaFw00OTEyMzEyMzU5NTlaMB4xHDAaBgNVBAMME0FXUyBJb1QgQ2VydGlmaWNh\n"\
+"dGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC4FD3+EMj+uUDigpY+\n"\
+"NXrz0BSvOHuKwOXTaWwHh6o+bQnomBP37mtJGyAC8AxBh8Djojc17+STxv76Qr0b\n"\
+"uyTnCk24HlIoKegUr4Rax/Oot4bVVZscERGIabz27OOdEuGzOZoXk8HHIW4MBxG/\n"\
+"LcEf7IiIwgNBtEPWdPenSJiZL46EPEcyUGedwuh8jeFoq3NSTQ0aCMHqaVlf5bGc\n"\
+"A9/A+scphKdt1+1YbS0zBvpizvrq2ddPRXiqba2Cf0qdA0ajly85aGDOh4nJ+KV3\n"\
+"82cqR8Ja5EnBufV2JNsfvF/Qtz+pASY2R4TUXZpLoMFmGnkk4IGhnqN0HV9nDjZU\n"\
+"TjORAgMBAAGjYDBeMB8GA1UdIwQYMBaAFDa83J5y4gpffHkuzUvHmLvsmFhRMB0G\n"\
+"A1UdDgQWBBRZVC//bGdF45/Mleh+2+56CaSqnDAMBgNVHRMBAf8EAjAAMA4GA1Ud\n"\
+"DwEB/wQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEAik5Lgg9D9bKvpv7hP07rG7c2\n"\
+"+goaOgiggNB0lsZlBYA0Q6zZ92yQ+e2xcrMNhZEwfu28H2pLmTAJKMZM0dq/1ztP\n"\
+"rqeCFSxdZFsD+Y9brf4W6aA81ZdeMSFF03LMKP73nOGZ1tJxcQcPOV6zoJd6Hr9p\n"\
+"YdjtzO2ZpSdns+Ym88bWG3axlTW7f/ePbhi+wjJB+xbWdm+/l+xunn0QBy8rRo5P\n"\
+"nkCOjkg/AzV1ZFBi/gQMzBN+iu3qR3NSHK6F6BykETEQWnScytooTozHGzStzx7Z\n"\
+"IDwMGmSWbu1ks78iIMZbtMEs3vu2kjUq3cbzonUCWaLujZQArKI6tMsEnmZXwA==\n"\
+"-----END CERTIFICATE-----\n";
+
+char ddevice_key[2048] = "-----BEGIN RSA PRIVATE KEY-----\n"\
+"MIIEpQIBAAKCAQEAuBQ9/hDI/rlA4oKWPjV689AUrzh7isDl02lsB4eqPm0J6JgT\n"\
+"9+5rSRsgAvAMQYfA46I3Ne/kk8b++kK9G7sk5wpNuB5SKCnoFK+EWsfzqLeG1VWb\n"\
+"HBERiGm89uzjnRLhszmaF5PBxyFuDAcRvy3BH+yIiMIDQbRD1nT3p0iYmS+OhDxH\n"\
+"MlBnncLofI3haKtzUk0NGgjB6mlZX+WxnAPfwPrHKYSnbdftWG0tMwb6Ys766tnX\n"\
+"T0V4qm2tgn9KnQNGo5cvOWhgzoeJyfild/NnKkfCWuRJwbn1diTbH7xf0Lc/qQEm\n"\
+"NkeE1F2aS6DBZhp5JOCBoZ6jdB1fZw42VE4zkQIDAQABAoIBAQCj47nR80XQrEVd\n"\
+"piB4IItoedGAs8winF3C3XCGP75OOCyDPqtAqbAxdYoJs4ll6qTMxsdbKUucWqb3\n"\
+"T+Yow3U2ktDhZXWGNtFfYWl4nd+NTmEonUAtO/EdP+8y9XQti/sQ4+8SoMX9MgFV\n"\
+"ihG94dG5R5HEGOBnZkSjsp4v/Q2IC/HNWqCIe+S6sVA48QOhaJ1vWhnHwjeo0py8\n"\
+"HdKgPPn4fJFiv2hZnsB3o+Vy8x6GWGVyzQxHWXLjF7vydeKqlN9IcvHqJ37ztqq/\n"\
+"SSPVpL3ZeBrLzMGnmO1vnnJu3OiCyZzgLKfcecDOVVdukhVaG32pXBiLui4XvsqD\n"\
+"98Eep6FBAoGBANli3hr4fdbtwXZwQ6YYCZzKv8QEnozVP1LQr3f0SavA9YRkOpyI\n"\
+"s9gR6R76AU0lYyQ4R3XOQi51AVMBgTtyMLL1bGKfdd4yXUh03UGb8x1LIygH9wPT\n"\
+"qWXJERZH+4V5Ozx9Vvy+Xp6+j/ns0Q+aOZAoNaKMjp+T628pmoqk4XhpAoGBANjG\n"\
+"z2hQq5GwjctQEvuuyNjVQTHAim9wcDQz4aMtFXtfRdtifqxdO3Mx1QLnaOeAoc8T\n"\
+"Zj5MOrS8kd2VzXSEtYht/eWk57v6iQDZ5FYnc/bjOBTpmcUyqLYkcO9a8rNoysod\n"\
+"Cydn3wNCzderYLl6VuxYD/P2cJP8Adw4r5ogBzzpAoGBAKPc8+FOuMTfmXpm64dz\n"\
+"DSPkbSMb/Evanw4VAn+gZDwUir2OM+Q046QW9CwGdh6p9Q6jYbJ6lMaiKipgswKV\n"\
+"dAIiH95DpzyjqE9q0DGZlWvabJjLUDbRQRrZsoiiIAWfubhCHuULtxVgPfU9vuVM\n"\
+"8uEofi2WWBgQD2NO8BBccx0pAoGBAM8MdSXphzXMMGK0xKznsKaKaY6fnJn8Bu+V\n"\
+"bjpw4UfJI+v7E4qGMjZArnfrl2MmlWY33Tw7iwb95USDxI06BDme9RbWfxAop5rM\n"\
+"gy9W14hEVliDFoAndsUh4Ux8zbtWp/qL6w9kQrnWoM0Rv3zowQVUx0f5ZmWyGgTB\n"\
+"j9fiJ4ehAoGAXYmqTC1rMUkLSextJbND76XIGwMDpH3eM5lIAuLT2bo5neX44FY7\n"\
+"1YFFvCq6AhpCgyXDvvq839DFsovb3qzOlJfEuxDjggWBg8EzVWiqG/yXUIC+CZrU\n"\
+"c/hy3y2hcfWzx2/47RS9Szm13vQcfx5o2yryJWoGntbJPpoyavjqqb4=\n"\
+"-----END RSA PRIVATE KEY-----\n";
+
+char pub_sign_key[256] = "-----BEGIN PUBLIC KEY-----\n"\
+"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE0zUXdx/TMY2oFCAV0J/ghaZXQfM5\n"\
+"yrWEaMAqpy9N1riSgvlELORawNaeFrFr9A7Tgx0CelSL/v5BtLND0wkUVg==\n"\
+"-----END PUBLIC KEY-----\n";
+
+ uint32_t  g_console_status = RESET_VALUE;
+ extern TaskHandle_t console_thread;
+ void flash_init(void);
+ void console_init(void);
+ void write_certs(void);
+
+ /**************************************************************************************
+  * @brief Console Thread entry function
+  * @param[in]  pvParameters contains TaskHandle_t
+  * @retval
+  **************************************************************************************/
+void console_thread_entry(void *pvParameters) {
+	FSP_PARAMETER_NOT_USED(pvParameters);
+
+	console_init();
+	flash_init();
+	/* TODO: add your own code here */
+	write_certs();
+    /* wait for application thread to finish MQTT connection */
+    xTaskNotifyWait(pdFALSE, pdFALSE, (uint32_t* )&console_thread, portMAX_DELAY);
+    printf_colour("\r\n[RED]Press any key to go to the application's setting area or after %d seconds, the application will run automatically[WHITE] \r\n",(WAIT_USER_TIME/1000));
+    if(application_counter(WAIT_USER_TIME))
+    {
+        printf_colour("\r\n[GREEN]Overtime for setting, will run the application now[WHITE] \r\n");
+        vTaskDelay(2000);
+        start_app();
+    }
+    printf_colour("\r\n[GREEN]Going to the setting area!!!![WHITE] \r\n");
+    vTaskDelay(2000);
+	while (1)
+	{
+		main_display_menu();
+		vTaskDelay(100);
+	}
+}
+
+/**************************************************************************************
+ * @brief  Console Initialization
+ * @param[in]
+ * @retval
+ **************************************************************************************/
+void console_init(void)
+{
+    fsp_err_t err = FSP_SUCCESS;
+    /* Version get API for FLEX pack information */
+    /* Initializing UART */
+    err = uart_initialize();
+    if (FSP_SUCCESS != err)
+    {
+        APP_ERR_PRINT ("\r\nUART INIT FAILED\r\n");
+        APP_ERR_TRAP(err);
+    }
+    else
+    {
+       APP_DBG_PRINT ("\r\nUART INIT SUCCESS\r\n");
+    }
+}
+
+/**************************************************************************************
+ * @brief     Initialize flash
+ * @param[in]
+ * @retval
+ **************************************************************************************/
+void flash_init(void)
+{
+     fsp_err_t err = FSP_SUCCESS;
+    /* Open Flash_HP */
+    err = R_FLASH_HP_Open(&user_flash_ctrl, &user_flash_cfg);
+    /* Handle Error */
+    if (FSP_SUCCESS != err)
+    {
+        APP_ERR_PRINT("\r\n Flah_HP_Open API failed");
+        APP_ERR_TRAP(err);
+    }
+}
+
+void write_certs(void)
+{
+    fsp_err_t err = FSP_SUCCESS;
+    char buffer[64] = {0};
+
+    memcpy(buffer,aevice_wifi,sizeof(aevice_wifi));
+    err = aws_certficate_write (5);
+    memcpy(buffer,mqtt_host,sizeof(mqtt_host));
+    err = aws_certficate_write (2);
+    memcpy(buffer,mqtt_client_identifier,sizeof(mqtt_client_identifier));
+    err = aws_certficate_write (3);
+    memcpy(buffer,ddevice_cert,sizeof(ddevice_cert));
+    err = aws_certficate_write (0);
+    memcpy(buffer,ddevice_key,sizeof(ddevice_key));
+    err = aws_certficate_write (1);
+    memcpy(buffer,pub_sign_key,sizeof(pub_sign_key));
+    err = aws_certficate_write (4);
+
+    if (FSP_SUCCESS != err)
+        {
+            APP_ERR_PRINT("\r\n Write certs failed");
+            APP_ERR_TRAP(err);
+        }
+}

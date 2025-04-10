@@ -1,0 +1,5 @@
+ra/arm/littlefs/lfs_util.o: ../ra/arm/littlefs/lfs_util.c \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/arm/littlefs/lfs_util.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/littlefs/config/lfs_util.h
+C:/Users/liren/Documents/OTA_RA6M3_v1/aws_ek_ra6m3_ota_app_wifi_da16200/ra_cfg/arm/littlefs/lfs_util.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/aws_ek_ra6m3_ota_app_wifi_da16200/ra/arm/littlefs/config/lfs_util.h:

@@ -1,0 +1,120 @@
+ra/fsp/src/rm_mcuboot_port/rm_mcuboot_port.o: \
+ ../ra/fsp/src/rm_mcuboot_port/rm_mcuboot_port.c \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/api/bsp_api.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/api/fsp_common_api.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/fsp_version.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/bsp_cfg.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_gen/bsp_clock_cfg.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/bsp_mcu_family_cfg.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/bsp_mcu_device_pn_cfg.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/bsp_mcu_device_cfg.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/ra6m3/bsp_mcu_info.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/ra6m3/bsp_elc.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/ra6m3/bsp_feature.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/ra6m3/bsp_feature_gen.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/board_cfg.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/board/ra6m3_ek/board.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/board/ra6m3_ek/board_init.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/board/ra6m3_ek/board_leds.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/board/ra6m3_ek/board_ethernet_phy.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_exceptions.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_gen/vector_data.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/renesas.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/R7FA6M3AH.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/core_cm4.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_version.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/mpu_armv7.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/system.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/system.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_common.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/api/fsp_common_api.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_compiler_support.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_tfu.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_register_protection.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_irq.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_io.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_group_irq.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_clocks.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_module_stop.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_security.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/fsp_features.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/api/fsp_common_api.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_compiler_support.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_delay.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_mcu_api.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/instances/rm_mcuboot_port.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/image.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/fault_injection_hardening.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/mcu-tools/include/mcuboot_config/mcuboot_config.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/crypto/common.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/bootutil.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/bootutil_public.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/rm_mcuboot_port/flash_map_backend/flash_map_backend.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/rm_mcuboot_port_cfg.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/bootutil_log.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/ignore.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/mcu-tools/include/mcuboot_config/mcuboot_logging.h \
+ ../ra/fsp/src/rm_mcuboot_port/flash_map_backend/flash_map_backend.h \
+ C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/mcu-tools/include/sysflash/sysflash.h
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/api/bsp_api.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/api/fsp_common_api.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/fsp_version.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/bsp_cfg.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_gen/bsp_clock_cfg.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/bsp_mcu_family_cfg.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/bsp_mcu_device_pn_cfg.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/bsp_mcu_device_cfg.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/ra6m3/bsp_mcu_info.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/ra6m3/bsp_elc.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/ra6m3/bsp_feature.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/ra6m3/bsp_feature_gen.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/bsp/board_cfg.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/board/ra6m3_ek/board.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/board/ra6m3_ek/board_init.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/board/ra6m3_ek/board_leds.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/board/ra6m3_ek/board_ethernet_phy.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_exceptions.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_gen/vector_data.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/renesas.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/R7FA6M3AH.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/core_cm4.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_version.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/arm/CMSIS_5/CMSIS/Core/Include/mpu_armv7.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/system.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/cmsis/Device/RENESAS/Include/system.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_common.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/api/fsp_common_api.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_compiler_support.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_tfu.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_register_protection.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_irq.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_io.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_group_irq.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_clocks.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_module_stop.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_security.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/fsp_features.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/api/fsp_common_api.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_compiler_support.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_delay.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/bsp/mcu/all/bsp_mcu_api.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/inc/instances/rm_mcuboot_port.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/image.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/fault_injection_hardening.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/mcu-tools/include/mcuboot_config/mcuboot_config.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/crypto/common.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/bootutil.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/bootutil_public.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/fsp/src/rm_mcuboot_port/flash_map_backend/flash_map_backend.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/fsp_cfg/rm_mcuboot_port_cfg.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/bootutil_log.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra/mcu-tools/MCUboot/boot/bootutil/include/bootutil/ignore.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/mcu-tools/include/mcuboot_config/mcuboot_logging.h:
+../ra/fsp/src/rm_mcuboot_port/flash_map_backend/flash_map_backend.h:
+C:/Users/liren/Documents/OTA_RA6M3_v1/bootloader_ek_ra6m3/ra_cfg/mcu-tools/include/sysflash/sysflash.h:

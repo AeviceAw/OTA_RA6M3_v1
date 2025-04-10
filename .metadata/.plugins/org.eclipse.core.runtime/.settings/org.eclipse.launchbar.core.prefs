@@ -1,0 +1,9 @@
+LaunchTargetManager/configs/aws_ek_ra6m3_ota_app_wifi_da16200\ Debug_Flat=null\:---
+LaunchTargetManager/configs/bootloader_ek_ra6m3\ Debug_Flat=null\:---
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+com.renesas.cdt.launch.dsf.launching.gdbLocalLaunchDescriptorType\:aws_ek_ra6m3_ota_app_wifi_da16200\ Debug_Flat/activeLaunchMode=debug
+com.renesas.cdt.launch.dsf.launching.gdbLocalLaunchDescriptorType\:aws_ek_ra6m3_ota_app_wifi_da16200\ Debug_Flat/activeLaunchTarget=null\:---
+configDescList=com.renesas.cdt.launch.dsf.launching.gdbLocalLaunchDescriptorType\:bootloader_ek_ra6m3 Debug_Flat,com.renesas.cdt.launch.dsf.launching.gdbLocalLaunchDescriptorType\:aws_ek_ra6m3_ota_app_wifi_da16200 Debug_Flat
+eclipse.preferences.version=1

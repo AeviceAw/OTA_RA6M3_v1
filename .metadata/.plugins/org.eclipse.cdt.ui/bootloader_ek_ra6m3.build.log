@@ -1,0 +1,8 @@
+17:04:59 **** Incremental Build of configuration Debug for project bootloader_ek_ra6m3 ****
+make -r -j22 all 
+arm-none-eabi-size --format=berkeley "bootloader_ek_ra6m3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  74800	      0	  14156	  88956	  15b7c	bootloader_ek_ra6m3.elf
+
+17:05:00 Build Finished. 0 errors, 0 warnings. (took 194ms)
+

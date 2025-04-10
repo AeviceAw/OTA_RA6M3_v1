@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="RenameExternalProjectImportWizard">
+		<item key="WizardRenameImportProjectPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardRenameImportProjectPage.STORE_CLEAN_BUILD_OUTPUT" value="false"/>
+		<list key="WizardRenameImportProjectPage.STORE_DIRECTORIES">
+			<item value="C:\Users\liren\Documents\AWS_FirmwareUpdateOTA_RA6M3_DA16200_SampleProject_FSPv530_20250124_OFJ#MCU6340\aws_ek_ra6m3_ota_app_wifi_da16200"/>
+			<item value="C:\Users\liren\Documents\AWS_FirmwareUpdateOTA_RA6M3_DA16200_SampleProject_FSPv530_20250124_OFJ#MCU6340\bootloader_ek_ra6m3"/>
+			<item value="C:\Users\liren\Documents\OTA_RA6M3_BASE\bootloader_ek_ra6m3"/>
+			<item value="C:\Users\liren\Downloads\OTA_RA6M3_DA16000-master\bootloader_ek_ra6m3"/>
+			<item value="C:\Users\liren\Downloads\OTA_RA6M3_DA16000-master\aws_ek_ra6m3_ota_app_wifi_da16200"/>
+		</list>
+		<list key="WizardRenameImportProjectPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+		<section name="RenameExternalProjectImportWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="660"/>
+			<item key="DIALOG_Y_ORIGIN" value="192"/>
+			<item key="DIALOG_WIDTH" value="613"/>
+			<item key="DIALOG_HEIGHT" value="696"/>
+			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		</section>
+	</section>
+</section>
