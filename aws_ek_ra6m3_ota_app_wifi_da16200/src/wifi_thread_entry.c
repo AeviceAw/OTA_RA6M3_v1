@@ -92,7 +92,7 @@ void wifi_thread_entry(void *pvParameters){
 
 } // end wifi_thread_entry()
 
-#elif CHECKPOINT1
+#else CHECKPOINT1
 #include "usr_hal.h"
 #include "mqtt_agent_task.h"
 #include "flash/flash_hp.h"
@@ -235,35 +235,53 @@ void wifi_thread_entry(void *pvParameters){
             APP_ERR_TRAP(bt_status);
         }
 
+        vTaskDelay(10000); // sleep 10-sec
+
         xSetMQTTAgentState( MQTT_AGENT_STATE_INITIALIZED );
         vStartMQTTAgent (APP_MAIN_MQTT_AGENT_TASK_STACK_SIZE, APP_MAIN_MQTT_AGENT_TASK_PRIORITY);
+
+        /******** Attempt to establish TLS session with MQTT broker. **********/
+        if( xGetMQTTAgentState() != MQTT_AGENT_STATE_CONNECTED )
+        {
+            ( void ) xWaitForMQTTAgentState( MQTT_AGENT_STATE_CONNECTED, portMAX_DELAY );
+        }
 
         /* Clear <<g_wifi_event>> Bits in <<MQTT_FLAG_ALL>>. */
         uxBits = xEventGroupClearBits( g_wifi_event,    /* The event group being updated. */
                                        MQTT_FLAG_ALL ); /* The bits being cleared. */
 
-        /* (3) Update <<g_wifi_event>> Accordingly */
-        if (status == FSP_SUCCESS){
-            xEventGroupSetBits(g_wifi_event, MQTT_FLAG_CONNECTED);
+        /* Publish SSID Information to Cloud: NOTE must - sizeof(diagStr)<90 Bytes */
+        char diagStr[64]; snprintf(diagStr, sizeof(diagStr) - 1, "Wifi: %s Ch: %i", (char*)getWifiParamAddr(WIFI_SSID), 99);
+        publishSysDiagnostic(DNAME,diagStr,8,4);
 
-            /* Write To RTT Segger for Print Out */
-            APP_PRINT("\r\n%s Wi-Fi & MQTT Setup Successful (%s,%s)!!!",RTT_TIMESTAMP(),(char*)getWifiParamAddr(WIFI_SSID),(char*)getWifiParamAddr(WIFI_PASSWORD));
+        /* Publish Firmware Version to Cloud */
+        publishSysVersion(DNAME, MMP_MAJOR_VERSION, MMP_MINOR_VERSION, MMP_PATCH,8,4);
 
-            /* Publish SSID Information to Cloud: NOTE must - sizeof(diagStr)<90 Bytes */
-            char diagStr[64]; snprintf(diagStr, sizeof(diagStr) - 1, "Wifi: %s Ch: %i", (char*)getWifiParamAddr(WIFI_SSID), 99);
-            publishSysDiagnostic(DNAME,diagStr,8,4);
+        /* Publish Request to Get KMDC Threshold Value */
+        publishKMDCThresRequest(DNAME,8,4);
 
-            /* Publish Firmware Version to Cloud */
-            publishSysVersion(DNAME, MMP_MAJOR_VERSION, MMP_MINOR_VERSION, MMP_PATCH,8,4);
-
-            /* Publish Request to Get KMDC Threshold Value */
-            publishKMDCThresRequest(DNAME,8,4);
-
-        } // end if (FSP_SUCCESS)
-        else{
-            xEventGroupSetBits(g_wifi_event, MQTT_FLAG_DISCONNECTED);
-            APP_PRINT("\r\n%s Wi-Fi & MQTT Setup Not Successful (%s,%s)...",RTT_TIMESTAMP(),(char*)getWifiParamAddr(WIFI_SSID),(char*)getWifiParamAddr(WIFI_PASSWORD));
-        } // end if (!FSP_SUCCESS)
+//        /* (3) Update <<g_wifi_event>> Accordingly */
+//        if (status == FSP_SUCCESS){
+//            xEventGroupSetBits(g_wifi_event, MQTT_FLAG_CONNECTED);
+//
+//            /* Write To RTT Segger for Print Out */
+//            APP_PRINT("\r\n%s Wi-Fi & MQTT Setup Successful (%s,%s)!!!",RTT_TIMESTAMP(),(char*)getWifiParamAddr(WIFI_SSID),(char*)getWifiParamAddr(WIFI_PASSWORD));
+//
+//            /* Publish SSID Information to Cloud: NOTE must - sizeof(diagStr)<90 Bytes */
+//            char diagStr[64]; snprintf(diagStr, sizeof(diagStr) - 1, "Wifi: %s Ch: %i", (char*)getWifiParamAddr(WIFI_SSID), 99);
+//            publishSysDiagnostic(DNAME,diagStr,8,4);
+//
+//            /* Publish Firmware Version to Cloud */
+//            publishSysVersion(DNAME, MMP_MAJOR_VERSION, MMP_MINOR_VERSION, MMP_PATCH,8,4);
+//
+//            /* Publish Request to Get KMDC Threshold Value */
+//            publishKMDCThresRequest(DNAME,8,4);
+//
+//        } // end if (FSP_SUCCESS)
+//        else{
+//            xEventGroupSetBits(g_wifi_event, MQTT_FLAG_DISCONNECTED);
+//            APP_PRINT("\r\n%s Wi-Fi & MQTT Setup Not Successful (%s,%s)...",RTT_TIMESTAMP(),(char*)getWifiParamAddr(WIFI_SSID),(char*)getWifiParamAddr(WIFI_PASSWORD));
+//        } // end if (!FSP_SUCCESS)
 
         /* (4) Pass back to UART_THREAD */
         xEventGroupSetBits(g_sync_event, UART_THREAD);
@@ -319,15 +337,15 @@ int config_littlFs_flash(void)
 
     return lfs_err;
 }
-#else
-void wifi_thread_entry(void *pvParameters){
-    volatile fsp_err_t status=FSP_ERR_ASSERTION;
-    while (1)
-    {
-        vTaskDelay (1);
-    }
-    FSP_PARAMETER_NOT_USED (status);
-    FSP_PARAMETER_NOT_USED (pvParameters);
-
-} // end wifi_thread_entry()
+//#else
+//void wifi_thread_entry(void *pvParameters){
+//    volatile fsp_err_t status=FSP_ERR_ASSERTION;
+//    while (1)
+//    {
+//        vTaskDelay (1);
+//    }
+//    FSP_PARAMETER_NOT_USED (status);
+//    FSP_PARAMETER_NOT_USED (pvParameters);
+//
+//} // end wifi_thread_entry()
 #endif

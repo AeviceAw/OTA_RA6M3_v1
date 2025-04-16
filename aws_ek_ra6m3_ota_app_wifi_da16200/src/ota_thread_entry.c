@@ -23,7 +23,7 @@
 
 #include "ota.h"
 
-#define DO_THE_THING
+//#define DO_THE_THING
 #ifdef DO_THE_THING
 /*************************************************************************************
  * Macro definitions
@@ -1679,7 +1679,7 @@ static CK_RV storePublicKey(void)
     }
     return xResult;
 }
-#elif CHECKPOINT1
+#else CHECKPOINT1
 
 /*************************************************************************************
  * Macro definitions
@@ -1970,12 +1970,6 @@ void ota_thread_entry(void *pvParameters)
 
     vStartOtaDemo();
     xEventGroupSetBits(g_sync_event, UART_THREAD);
-
-    /******** Attempt to establish TLS session with MQTT broker. **********/
-    if( xGetMQTTAgentState() != MQTT_AGENT_STATE_CONNECTED )
-    {
-        ( void ) xWaitForMQTTAgentState( MQTT_AGENT_STATE_CONNECTED, portMAX_DELAY );
-    }
 
     /* Subscribe to topics for the Data Pull and LED actuation */
     const char **pTopicnames = pTopics_subscribe;

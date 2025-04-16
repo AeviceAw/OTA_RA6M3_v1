@@ -61,7 +61,7 @@ void ssidpw_thread_entry(void *pvParameters){
     FSP_PARAMETER_NOT_USED (uxBits);
 
 } // end ssidpw_thread_entry()
-#elif CHECKPOINT1
+#else CHECKPOINT1
 /* SSIDPW thread entry function */
 /* pvParameters contains TaskHandle_t */
 void ssidpw_thread_entry(void *pvParameters){
@@ -119,15 +119,15 @@ void ssidpw_thread_entry(void *pvParameters){
     FSP_PARAMETER_NOT_USED (uxBits);
 
 } // end ssidpw_thread_entry()
-#else
-void ssidpw_thread_entry(void *pvParameters){
-    volatile fsp_err_t status=FSP_ERR_ASSERTION;
-    while (1)
-    {
-        vTaskDelay (1);
-    }
-    FSP_PARAMETER_NOT_USED (status);
-    FSP_PARAMETER_NOT_USED (pvParameters);
-
-} // end subscribe_thread_entry()
+//#else
+//void ssidpw_thread_entry(void *pvParameters){
+//    volatile fsp_err_t status=FSP_ERR_ASSERTION;
+//    while (1)
+//    {
+//        vTaskDelay (1);
+//    }
+//    FSP_PARAMETER_NOT_USED (status);
+//    FSP_PARAMETER_NOT_USED (pvParameters);
+//
+//} // end subscribe_thread_entry()
 #endif
