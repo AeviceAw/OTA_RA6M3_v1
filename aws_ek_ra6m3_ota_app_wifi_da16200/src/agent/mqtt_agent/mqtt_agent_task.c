@@ -837,6 +837,7 @@ void prvMQTTAgentTask( void * pvParameters )
                 APP_PRINT( "MQTT Agent loop terminated due to abrupt disconnect. Retrying MQTT connection.. \r\n" );
                 /* MQTT agent returned due to an underlying error, reconnect to the loop. */
                 ( void ) prvDisconnectTLS( &xNetworkContext );
+                vTaskDelay(2000);
                 pMqttContext->connectStatus = prvConnectToMQTTBroker( true );
             }
         }
@@ -895,7 +896,7 @@ static MQTTConnectionStatus_t prvConnectToMQTTBroker( bool xIsReconnect )
     {
         /* Create a TLS connection to broker */
         xStatus = prvCreateTLSConnection( &xNetworkContext );
-
+        APP_PRINT("In prvConnectToMQTTBroker \r\n");
         if( xStatus == pdPASS )
         {
             xMQTTStatus = prvCreateMQTTConnection( xIsReconnect );

@@ -1028,6 +1028,10 @@
       <property id="rtos.awsfreertos.object.flags.symbol" value="g_sync_event"/>
       <property id="rtos.awsfreertos.object.flags.allocation" value="rtos.awsfreertos.object.flags.allocation.static"/>
     </object>
+    <object id="rtos.awsfreertos.object.binary_semaphore.1230314411">
+      <property id="rtos.awsfreertos.object.binary_semaphore.symbol" value="g_ota_semaphore"/>
+      <property id="rtos.awsfreertos.object.binary_semaphore.allocation" value="rtos.awsfreertos.object.binary_semaphore.allocation.static"/>
+    </object>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.0"/>
       <stack module="module.middleware.rm_freertos_port.0"/>
@@ -1047,7 +1051,7 @@
     <context id="rtos.awsfreertos.thread.856315371">
       <property id="_symbol" value="ota_thread"/>
       <property id="rtos.awsfreertos.thread.name" value="OTA Thread"/>
-      <property id="rtos.awsfreertos.thread.stack" value="0x2000"/>
+      <property id="rtos.awsfreertos.thread.stack" value="12288"/>
       <property id="rtos.awsfreertos.thread.priority" value="3"/>
       <property id="rtos.awsfreertos.thread.context" value="NULL"/>
       <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>

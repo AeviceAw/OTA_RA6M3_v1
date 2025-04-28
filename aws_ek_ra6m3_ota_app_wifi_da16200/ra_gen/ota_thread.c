@@ -4,9 +4,9 @@
 #if 1
 static StaticTask_t ota_thread_memory;
 #if defined(__ARMCC_VERSION)           /* AC6 compiler */
-                static uint8_t ota_thread_stack[0x2000] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
+                static uint8_t ota_thread_stack[12288] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
                 #else
-static uint8_t ota_thread_stack[0x2000] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.ota_thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
+static uint8_t ota_thread_stack[12288] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.ota_thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
 #endif
 #endif
 TaskHandle_t ota_thread;
@@ -32,7 +32,7 @@ void ota_thread_create(void)
                     BaseType_t ota_thread_create_err = xTaskCreate(
                     #endif
                                     ota_thread_func,
-                                    (const char*) "OTA Thread", 0x2000 / 4, // In words, not bytes
+                                    (const char*) "OTA Thread", 12288 / 4, // In words, not bytes
                                     (void*) &ota_thread_parameters, //pvParameters
                                     3,
 #if 1

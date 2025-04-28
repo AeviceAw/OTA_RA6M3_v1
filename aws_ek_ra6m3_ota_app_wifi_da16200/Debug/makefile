@@ -24,7 +24,6 @@ RM := rm -rf
 -include src/Thread_Dataprocess/subdir.mk
 -include src/System/subdir.mk
 -include src/SEGGER_RTT/subdir.mk
--include src/Dataflash/subdir.mk
 -include src/DA16x00MOD/subdir.mk
 -include src/BGX/subdir.mk
 -include src/Algorithm/DSP/Vitals/subdir.mk
@@ -168,7 +167,7 @@ all: aws_ek_ra6m3_ota_app_wifi_da16200.elf secondary-outputs
 
 # Tool invocations
 aws_ek_ra6m3_ota_app_wifi_da16200.elf: $(OBJS) $(USER_OBJS) $(LINKER_SCRIPT)
-	$(file > aws_ek_ra6m3_ota_app_wifi_da16200.elf.in,-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Oz -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -T "fsp.ld" -Xlinker --gc-sections -L "C:\\Users\\liren\\Documents\\aeviceMD_OTA\\aws_ek_ra6m3_ota_app_wifi_da16200/script" -Wl,-Map,"aws_ek_ra6m3_ota_app_wifi_da16200.map" --specs=nano.specs -u _printf_float --specs=rdimon.specs -o "aws_ek_ra6m3_ota_app_wifi_da16200.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
+	$(file > aws_ek_ra6m3_ota_app_wifi_da16200.elf.in,-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-strict-aliasing -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal -g -T "fsp.ld" -Xlinker --gc-sections -L "C:\\Users\\liren\\Documents\\aeviceMD_OTA\\aws_ek_ra6m3_ota_app_wifi_da16200/script" -Wl,-Map,"aws_ek_ra6m3_ota_app_wifi_da16200.map" --specs=nano.specs -u _printf_float --specs=rdimon.specs -o "aws_ek_ra6m3_ota_app_wifi_da16200.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
 	@echo Building target: $@ && arm-none-eabi-gcc @"aws_ek_ra6m3_ota_app_wifi_da16200.elf.in"
 aws_ek_ra6m3_ota_app_wifi_da16200.srec: aws_ek_ra6m3_ota_app_wifi_da16200.elf
 	arm-none-eabi-objcopy -O srec "aws_ek_ra6m3_ota_app_wifi_da16200.elf"  "aws_ek_ra6m3_ota_app_wifi_da16200.srec"

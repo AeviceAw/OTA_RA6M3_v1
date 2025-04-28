@@ -139,6 +139,7 @@ extern SemaphoreHandle_t g_rgb_semaphore;
 extern SemaphoreHandle_t g_publish_semaphore;
 extern EventGroupHandle_t g_wifi_event;
 extern EventGroupHandle_t g_sync_event;
+extern SemaphoreHandle_t g_ota_semaphore;
 void g_common_init(void);
 FSP_FOOTER
 #endif /* COMMON_DATA_H_ */

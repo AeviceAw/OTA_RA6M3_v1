@@ -120,7 +120,6 @@ src/Algorithm/DSP/Vitals \
 src/Algorithm \
 src/BGX \
 src/DA16x00MOD \
-src/Dataflash \
 src \
 src/SEGGER_RTT \
 src/System \

@@ -400,6 +400,11 @@ EventGroupHandle_t g_sync_event;
 StaticEventGroup_t g_sync_event_memory;
 #endif
 void rtos_startup_err_callback(void *p_instance, void *p_data);
+SemaphoreHandle_t g_ota_semaphore;
+#if 1
+StaticSemaphore_t g_ota_semaphore_memory;
+#endif
+void rtos_startup_err_callback(void *p_instance, void *p_data);
 void g_common_init(void)
 {
     g_topic_queue =
@@ -598,5 +603,15 @@ void g_common_init(void)
     if (NULL == g_sync_event)
     {
         rtos_startup_err_callback (g_sync_event, 0);
+    }
+    g_ota_semaphore =
+#if 1
+            xSemaphoreCreateBinaryStatic (&g_ota_semaphore_memory);
+#else
+                xSemaphoreCreateBinary();
+                #endif
+    if (NULL == g_ota_semaphore)
+    {
+        rtos_startup_err_callback (g_ota_semaphore, 0);
     }
 }

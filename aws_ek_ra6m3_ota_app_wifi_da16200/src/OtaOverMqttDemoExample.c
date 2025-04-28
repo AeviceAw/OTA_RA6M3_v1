@@ -269,7 +269,7 @@ extern char g_iot_thing_name[128];
 char g_write_buffer[2048];
 bool g_cred = false;
 
-#define aevice_wifi "AE-Router 201607130713\r"
+#define aevice_wifi "AU-Router 201607130713\r"
 /*---------------------------------------------------------*/
 
 /**
@@ -1311,13 +1311,13 @@ static void vOtaDemoTask( void * pvParam )
     {
         (void ) xWaitForMQTTAgentState (MQTT_AGENT_STATE_CONNECTED, portMAX_DELAY);
     }
-    IotLogInfo("---------Start OTA Task---------\r\n");
+    APP_PRINT("---------Start OTA Task---------\r\n");
     ( void ) pvParam;
 
     pcThingName = g_iot_thing_name;
     xThingNameLength = strlen(g_iot_thing_name);
 
-    IotLogInfo( "[GREEN]OTA over MQTT demo, Application version %u.%u.%u [WHITE]\r\n",
+    APP_PRINT( "[GREEN]OTA over MQTT demo, Application version %u.%u.%u [WHITE]\r\n",
                appFirmwareVersion.u.x.major,
                appFirmwareVersion.u.x.minor,
                appFirmwareVersion.u.x.build );
@@ -1327,7 +1327,7 @@ static void vOtaDemoTask( void * pvParam )
 
     if( xBufferSemaphore == NULL )
     {
-        IotLogError( "Failed to initialize buffer semaphore. \r\n" );
+        APP_PRINT( "Failed to initialize buffer semaphore. \r\n" );
         xReturnStatus = pdFAIL;
     }
 

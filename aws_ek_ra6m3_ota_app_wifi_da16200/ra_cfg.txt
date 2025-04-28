@@ -1466,7 +1466,7 @@ FSP Configuration
   Thread "OTA Thread"
     Symbol: ota_thread
     Name: OTA Thread
-    Stack size (bytes): 0x2000
+    Stack size (bytes): 12288
     Priority: 3
     Thread Context: NULL
     Memory Allocation: Static
@@ -2032,5 +2032,9 @@ FSP Configuration
     
   Object "g_sync_event Event Group"
     Symbol: g_sync_event
+    Memory Allocation: Static
+    
+  Object "g_ota_semaphore Binary Semaphore"
+    Symbol: g_ota_semaphore
     Memory Allocation: Static
     

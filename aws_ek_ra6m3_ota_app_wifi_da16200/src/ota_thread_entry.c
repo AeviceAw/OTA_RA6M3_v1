@@ -1966,10 +1966,9 @@ void ota_thread_entry(void *pvParameters)
     //TODO: Add wait for writing certs to flash
     FSP_PARAMETER_NOT_USED (pvParameters);
 
-    bt_status = xTaskNotifyWait(pdFALSE, pdFALSE, &g_ota_status, portMAX_DELAY);
+    xSemaphoreTake(g_ota_semaphore,portMAX_DELAY);
 
     vStartOtaDemo();
-    xEventGroupSetBits(g_sync_event, UART_THREAD);
 
     /* Subscribe to topics for the Data Pull and LED actuation */
     const char **pTopicnames = pTopics_subscribe;

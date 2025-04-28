@@ -94,6 +94,7 @@ void wifi_thread_entry(void *pvParameters){
 
 #else CHECKPOINT1
 #include "usr_hal.h"
+#include "usr_network.h"
 #include "mqtt_agent_task.h"
 #include "flash/flash_hp.h"
 #include <usr_config.h>
@@ -118,6 +119,7 @@ extern char g_private_key[2048];
 extern char g_mqtt_endpoint[128];
 
 extern char g_write_buffer[2048];
+extern TaskHandle_t ota_thread;
 
 /*************************************************************************************
  * Private functions
@@ -207,6 +209,7 @@ void wifi_thread_entry(void *pvParameters){
             APP_ERR_PRINT("** network interface setup failed **\r\n");
             APP_ERR_TRAP(fsp_status);
         }
+        wifi_state_set();
 
         str_status = vAlternateKeyProvisioning (&params);
         if (CKR_OK != str_status)
@@ -235,16 +238,21 @@ void wifi_thread_entry(void *pvParameters){
             APP_ERR_TRAP(bt_status);
         }
 
-        vTaskDelay(10000); // sleep 10-sec
 
+        xEventGroupSetBits(g_wifi_event, MQTT_FLAG_CONNECTED);
         xSetMQTTAgentState( MQTT_AGENT_STATE_INITIALIZED );
+
         vStartMQTTAgent (APP_MAIN_MQTT_AGENT_TASK_STACK_SIZE, APP_MAIN_MQTT_AGENT_TASK_PRIORITY);
+//        vStartOtaDemo();
+
+//        xTaskNotifyFromISR(ota_thread, 1, 1, NULL);
 
         /******** Attempt to establish TLS session with MQTT broker. **********/
         if( xGetMQTTAgentState() != MQTT_AGENT_STATE_CONNECTED )
         {
             ( void ) xWaitForMQTTAgentState( MQTT_AGENT_STATE_CONNECTED, portMAX_DELAY );
         }
+        internet_state_set();
 
         /* Clear <<g_wifi_event>> Bits in <<MQTT_FLAG_ALL>>. */
         uxBits = xEventGroupClearBits( g_wifi_event,    /* The event group being updated. */
@@ -259,6 +267,8 @@ void wifi_thread_entry(void *pvParameters){
 
         /* Publish Request to Get KMDC Threshold Value */
         publishKMDCThresRequest(DNAME,8,4);
+
+        xSemaphoreGive(g_ota_semaphore);
 
 //        /* (3) Update <<g_wifi_event>> Accordingly */
 //        if (status == FSP_SUCCESS){
